@@ -1,0 +1,25 @@
+director-view {
+  padding: 20px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+director-view h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+director-view p {
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+director-view ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+director-view li {
+  font-size: 1.2em;
+  margin: 0.5em 0;
+}

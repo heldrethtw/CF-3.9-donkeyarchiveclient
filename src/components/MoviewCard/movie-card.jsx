@@ -1,33 +1,35 @@
-import React from "react";
-import React from "react";
 import PropTypes from "prop-types";
+import { useState, useEffect } from "react";
 import "./movie-card.scss";
 
-function MovieCard(props) {
+export function MovieCard(props) {
   const { movie, onMovieClick } = props;
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div className="movie-card" onClick={() => onMovieClick(movie)}>
+      {isHovered && (
+        <div className="overlay">
+          <div className="overlay-text">{movie.Description}</div>
+        </div>
+      )}
       <img className="movie-poster" src={movie.ImagePath} />
       <div className="movie-title">{movie.Title}</div>
     </div>
   );
 }
 
-return (
-  <div className="donkey-archive">
-    <h1>Donkey Archive</h1>
-  </div>
-);
-
-function MovieCard(props) {
-  const { movie, onMovieClick } = props;
-
-  return (
-    <div className="movie-card" onClick={() => onMovieClick(movie)}>
-      <img className="movie-poster" src={movie.ImagePath} />
-      <div className="movie-title">{movie.Title}</div>
-    </div>
-  );
-}
-
-export default MovieCard;
+MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    Genre: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+    }),
+    Director: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+    }),
+    ImagePath: PropTypes.string.isRequired,
+  }).isRequired,
+  onMovieClick: PropTypes.func.isRequired,
+};

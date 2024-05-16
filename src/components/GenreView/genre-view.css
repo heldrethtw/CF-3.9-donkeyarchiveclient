@@ -1,0 +1,29 @@
+genre-view {
+  padding: 20px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+genre-view h1 {
+  font-size: 2rem;
+  margin-bottom: 10 px;
+}
+
+genre-view p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+genre-view h2 {
+  margin-top: 20px;
+  font-size: 1.5rem;
+}
+
+genre-view ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+genre-view li {
+  font-size: 1rem;
+  margin: 10px 0;
+}
