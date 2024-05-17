@@ -8,7 +8,14 @@ import { DirectorView } from "../DirectorView/director-view";
 import { ProfileView } from "../ProfileView/profile-view";
 import NavBar from "../NavBar/nav-bar";
 import "./mainview.scss";
-import "..MovieCard/moviecard.scss";
+import "../MovieCard/moviecard.scss";
+import "../MovieView/movieview.scss";
+import "../NavBar/navbar.scss";
+import "../ProfileView/profileview.scss";
+import "../GenreView/genreview.scss";
+import "../DirectorView/directorview.scss";
+import "../LoginView/loginview.scss";
+import "../RegistrationView/registrationview.scss";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));

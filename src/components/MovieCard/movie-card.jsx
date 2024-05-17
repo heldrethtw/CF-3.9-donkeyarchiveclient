@@ -1,13 +1,14 @@
-// src/components/MovieCard/movie-card.jsx
 import React from "react";
 import PropTypes from "prop-types";
 import { useState } from "react";
-import "./movie-card.scss";
+import "./moviecard.scss";
 
-export function MovieCard(props) {
-  const { movie, onMovieClick, onGenreClick, onDirectorClick } = props;
-  const [isHovered, setIsHovered] = useState(false);
-
+export const MovieCard = ({
+  movie,
+  onMovieClick,
+  onGenreClick,
+  onDirectorClick,
+}) => {
   return (
     <div
       className="movie-card"
@@ -40,7 +41,7 @@ export function MovieCard(props) {
       </button>
     </div>
   );
-}
+};
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
