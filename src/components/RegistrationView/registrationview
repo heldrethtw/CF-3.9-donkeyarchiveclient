@@ -1,0 +1,51 @@
+.registration-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.registration-container h1 {
+  text-align: center;
+  color: #333;
+}
+
+.registration-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.registration-container label {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.registration-container input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.registration-container input[type="text"],
+.registration-container input[type="password"] {
+  width: 100%;
+}
+
+.registration-container button {
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.registration-container button:hover {
+  background-color: #0056b3;
+}

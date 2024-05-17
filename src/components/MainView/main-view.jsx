@@ -6,7 +6,9 @@ import { RegistrationView } from "../RegistrationView/registration-view";
 import { GenreView } from "../GenreView/genre-view";
 import { DirectorView } from "../DirectorView/director-view";
 import { ProfileView } from "../ProfileView/profile-view";
-import { Navbar } from "../NavBar/nav-bar";
+import NavBar from "../NavBar/nav-bar";
+import "./mainview.scss";
+import "..MovieCard/moviecard.scss";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -14,6 +16,9 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [selectedGenreId, setSelectedGenreId] = useState(null);
+  const [selectedDirectorName, setSelectedDirectorName] = useState(null);
+  const [isProfileView, setIsProfileView] = useState(false);
 
   useEffect(() => {
     if (!storedToken) return;
@@ -25,18 +30,17 @@ export const MainView = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        const constMovieFromApi = data.map((movie) => {
-          return {
-            _id: movie._id,
-            Title: movie.Title,
-            Description: movie.Description,
-            Genre: movie.Genre.Name,
-            Director: movie.Director.Name,
-            ImagePath: movie.ImagePath,
-            Featured: movie.Featured,
-          };
-        });
-        setMovies(constMovieFromApi);
+        const moviesFromApi = data.map((movie) => ({
+          _id: movie._id,
+          Title: movie.Title,
+          Description: movie.Description,
+          Genre: movie.Genre.Name,
+          GenreId: movie.Genre._id,
+          Director: movie.Director.Name,
+          ImagePath: movie.ImagePath,
+          Featured: movie.Featured,
+        }));
+        setMovies(moviesFromApi);
       })
       .catch((err) => {
         console.error("There was an error loading the movies", err);
@@ -45,85 +49,9 @@ export const MainView = () => {
 
   const handleLogout = () => {
     setUser(null);
-    storedToken(null);
-
-    if (!user) {
-      return (
-        <>
-          <LoginView
-            onLoggedIn={(user, token) => {
-              setUser(user);
-              setToken(token);
-            }}
-          />
-          or
-          <RegistrationView />
-        </>
-      );
-    }
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
   };
-
-  return (
-    <div className="main-view">
-      <Navbar user={user} onUserChange={setUser} />
-      {selectedMovie ? (
-        <MovieView
-          movie={selectedMovie}
-          onBackClick={() => setSelectedMovie(null)}
-        />
-      ) : (
-        movies.map((movie) => (
-          <MovieCard
-            key={movie._id}
-            movie={movie}
-            onMovieClick={(movie) => setSelectedMovie(movie)}
-          />
-        ))
-      )}
-
-      <GenreView />
-      <DirectorView />
-      <ProfileView />
-    </div>
-  );
-};
-const storedUser = JSON.parse(localStorage.getItem("user"));
-const storedToken = localStorage.getItem("token");
-const [user, setUser] = useState(storedUser);
-const [movies, setMovies] = useState([]);
-const [selectedMovie, setSelectedMovie] = useState(null);
-
-useEffect(() => {
-  if (!storedToken) return;
-
-  fetch("https://donkey-archive.erokapp.com/movies", {
-    headers: {
-      Authorization: `Bearer ${storedToken}`,
-    },
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      constMovieFromApi = data.map((movie) => {
-        return {
-          _id: movie._id,
-          Title: movie.Title,
-          Description: movie.Description,
-          Genre: movie.Genre.Name,
-          Director: movie.Director.Name,
-          ImagePath: movie.ImagePath,
-          Featured: movie.Featured,
-        };
-      });
-      setMovies(constMovieFromApi);
-    })
-    .catch((err) => {
-      console.error("There was an error loading the movies", err);
-    });
-}, [storedToken]);
-
-const handleLogout = () => {
-  setUser(null);
-  storedToken(null);
 
   if (!user) {
     return (
@@ -131,10 +59,10 @@ const handleLogout = () => {
         <LoginView
           onLoggedIn={(user, token) => {
             setUser(user);
-            setToken(token);
+            localStorage.setItem("token", token);
+            localStorage.setItem("user", JSON.stringify(user));
           }}
         />
-        or
         <RegistrationView />
       </>
     );
@@ -142,25 +70,35 @@ const handleLogout = () => {
 
   return (
     <div className="main-view">
-      <Navbar user={user} onUserChange={setUser} />
-      {selectedMovie ? (
+      <NavBar
+        user={user}
+        onUserChange={setUser}
+        onProfileClick={() => setIsProfileView(true)}
+      />
+      {isProfileView ? (
+        <ProfileView user={user} onBackClick={() => setIsProfileView(false)} />
+      ) : selectedMovie ? (
         <MovieView
           movie={selectedMovie}
           onBackClick={() => setSelectedMovie(null)}
         />
+      ) : selectedGenreId ? (
+        <GenreView genreId={selectedGenreId} />
+      ) : selectedDirectorName ? (
+        <DirectorView directorName={selectedDirectorName} />
       ) : (
         movies.map((movie) => (
           <MovieCard
             key={movie._id}
             movie={movie}
             onMovieClick={(movie) => setSelectedMovie(movie)}
+            onGenreClick={(genreId) => setSelectedGenreId(genreId)}
+            onDirectorClick={(directorName) =>
+              setSelectedDirectorName(directorName)
+            }
           />
         ))
       )}
-
-      <GenreView />
-      <DirectorView />
-      <ProfileView />
     </div>
   );
 };

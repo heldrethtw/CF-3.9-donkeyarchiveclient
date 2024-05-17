@@ -1,5 +1,5 @@
-//import { response } from "express";
 import React, { useState, useEffect } from "react";
+import "./profile-view.scss";
 
 const ProfileView = () => {
   // Initial state for the user object

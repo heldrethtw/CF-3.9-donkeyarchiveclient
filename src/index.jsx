@@ -1,6 +1,15 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./nav-bar.scss";
+import "./director-view.scss";
+import "./genre-view.scss";
+import "./login-view.scss";
+import "./main-view.scss";
+import "./movie-card.scss";
+import "./movie-view.scss";
+import "./profile-view.scss";
+import "./registration-view.scss";
 
 const DonkeyArchiveClient = () => {
   return (

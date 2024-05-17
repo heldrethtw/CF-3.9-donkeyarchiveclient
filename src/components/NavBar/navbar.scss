@@ -1,0 +1,47 @@
+@import "~bootstrap/scss/bootstrap";
+
+.navbar {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.navbar-brand {
+display: flex;
+align-items: center;
+font-size: medium;
+color: #80435c;
+}
+
+img{
+    margin-right: 10px;
+}
+
+
+.navbar-nav {
+    .nav-link {
+        color: #80435c;
+       &:hover {
+            color: #4202f1;
+        }
+    
+  
+}
+}
+
+.navbar-toggler{
+    border: none;
+    &:focus{
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #495057;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.container {
+    padding: 20px;
+}
