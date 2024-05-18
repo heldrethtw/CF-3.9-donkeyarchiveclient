@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./registration-view.scss";
 
 const RegistrationView = () => {
   const [username, setUsername] = useState("");
@@ -17,7 +18,7 @@ const RegistrationView = () => {
   };
 
   return (
-    <div>
+    <div className="registration-container">
       <h1>Registration</h1>
       <form onSubmit={handleSubmit}>
         <label>
