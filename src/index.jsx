@@ -1,21 +1,26 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./nav-bar.scss";
-import "./director-view.scss";
-import "./genre-view.scss";
-import "./login-view.scss";
-import "./main-view.scss";
-import "./movie-card.scss";
-import "./movie-view.scss";
-import "./profile-view.scss";
-import "./registration-view.scss";
+import "./index.scss";
+import NavBar from "./components/NavBar/nav-bar";
+import "./components/DirectorView/directorview.scss";
+import "./components/GenreView/genreview.scss";
+import "./components/LoginView/loginview.scss";
+import "./components/MainView/mainview.scss";
+import "./components/MovieCard/moviecard.scss";
+import "./components/MovieView/movieview.scss";
+import "./components/ProfileView/profileview.scss";
+import "./components/RegistrationView/registrationview.scss";
 
 const DonkeyArchiveClient = () => {
   return (
-    <div className="donkey-archive">
-      <h1>Donkey Archive</h1>
-    </div>
+    <Router>
+      <div className="donkey-archive">
+        <NavBar />
+        <h1>Welcome!</h1>
+      </div>
+    </Router>
   );
 };
 

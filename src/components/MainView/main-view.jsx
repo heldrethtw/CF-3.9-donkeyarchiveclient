@@ -68,6 +68,7 @@ export const MainView = () => {
             setUser(user);
             localStorage.setItem("token", token);
             localStorage.setItem("user", JSON.stringify(user));
+            onLoggedOut = { handleLogout };
           }}
         />
         <RegistrationView />
