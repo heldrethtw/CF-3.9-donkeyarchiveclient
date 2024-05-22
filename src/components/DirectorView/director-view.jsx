@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { propTypes } from "prop-types";
-import "./director-view.scss";
+import { PropTypes } from "prop-types";
+import "./directorview.scss";
 
-const DirectorView = ({ directorID }) => {
+export const DirectorView = ({ directorID }) => {
   const [director, setDirector] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -48,8 +48,8 @@ const DirectorView = ({ directorID }) => {
   );
 };
 
-DirectorView.propTypes = {
-  directorID: propTypes.string.isRequired,
+DirectorView.PropTypesTypes = {
+  directorID: PropTypes.string.isRequired,
 };
 
 export default DirectorView;

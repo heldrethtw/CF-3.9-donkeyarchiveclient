@@ -9,6 +9,12 @@ export const MovieCard = ({
   onGenreClick,
   onDirectorClick,
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  if (!movie) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div
       className="movie-card"

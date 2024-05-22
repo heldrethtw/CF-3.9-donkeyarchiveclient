@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./registration-view.scss";
+import "./registrationview.scss";
 
-const RegistrationView = () => {
+export const RegistrationView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 

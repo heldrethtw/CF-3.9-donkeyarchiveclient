@@ -82,6 +82,7 @@ export const MainView = () => {
         user={user}
         onUserChange={setUser}
         onProfileClick={() => setIsProfileView(true)}
+        onLogoutClick={handleLogout}
       />
       {isProfileView ? (
         <ProfileView user={user} onBackClick={() => setIsProfileView(false)} />

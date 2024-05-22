@@ -20690,55 +20690,6 @@ login-view .back {
   font-size: 1rem;
 }
 
-.main-view {
-  background-color: #faebd7;
-  border-radius: 8px;
-  flex-direction: column;
-  align-items: center;
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-  font-family: Gill Sans, Gill Sans MT, Calibri, Trebuchet MS, sans-serif;
-  display: flex;
-  box-shadow: 0 4px 8px #0000001a;
-}
-
-.navbar {
-  color: #fff;
-  background-color: #343a40;
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 10px;
-  box-shadow: 0 4px 8px #0000001a;
-}
-
-.movie-card {
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  display: flex;
-}
-
-.movie-view, .genre-view, .director-view, .profile-view {
-  background-color: #fff;
-  border-radius: 10px;
-  width: 100%;
-  max-width: 1200px;
-  margin: 20px 0;
-  padding: 20px;
-  box-shadow: 0 4px 8px #0000001a;
-}
-
-.login-view, .registration-view {
-  background-color: #fff;
-  border-radius: 10px;
-  width: 100%;
-  max-width: 500px;
-  margin: 20px auto;
-  padding: 20px;
-  box-shadow: 0 4px 8px #0000001a;
-}
-
 .movie-card {
   cursor: pointer;
   display: inline-block;
@@ -20815,6 +20766,57 @@ button:hover {
   .movie-view {
     padding: 10px;
   }
+}
+
+.registration-container {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.registration-container h1 {
+  text-align: center;
+  color: #333;
+}
+
+.registration-container form {
+  flex-direction: column;
+  display: flex;
+}
+
+.registration-container label {
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.registration-container input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.registration-container input[type="text"], .registration-container input[type="password"] {
+  width: 100%;
+}
+
+.registration-container button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  margin-top: 15px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.registration-container button:hover {
+  background-color: #0056b3;
 }
 
 body {
@@ -20903,54 +20905,52 @@ body {
   margin-bottom: 5px;
 }
 
-.registration-container {
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
+.main-view {
+  background-color: #faebd7;
   border-radius: 8px;
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.registration-container h1 {
-  text-align: center;
-  color: #333;
-}
-
-.registration-container form {
   flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  font-family: Gill Sans, Gill Sans MT, Calibri, Trebuchet MS, sans-serif;
+  display: flex;
+  box-shadow: 0 4px 8px #0000001a;
+}
+
+.navbar {
+  color: #fff;
+  background-color: #343a40;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+  box-shadow: 0 4px 8px #0000001a;
+}
+
+.movie-card {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
   display: flex;
 }
 
-.registration-container label {
-  color: #555;
-  margin-bottom: 10px;
-}
-
-.registration-container input {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-top: 5px;
-  padding: 8px;
-  font-size: 16px;
-}
-
-.registration-container input[type="text"], .registration-container input[type="password"] {
+.movie-view, .genre-view, .director-view, .profile-view {
+  background-color: #fff;
+  border-radius: 10px;
   width: 100%;
+  max-width: 1200px;
+  margin: 20px 0;
+  padding: 20px;
+  box-shadow: 0 4px 8px #0000001a;
 }
 
-.registration-container button {
-  color: #fff;
-  cursor: pointer;
-  background-color: #007bff;
-  border: none;
-  border-radius: 4px;
-  margin-top: 15px;
-  padding: 10px;
-  font-size: 16px;
-}
-
-.registration-container button:hover {
-  background-color: #0056b3;
+.login-view, .registration-view {
+  background-color: #fff;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 4px 8px #0000001a;
 }
 /*# sourceMappingURL=index.2212206d.css.map */

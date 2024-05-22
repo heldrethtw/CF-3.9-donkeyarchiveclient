@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { propTypes } from "prop-types";
-import "./genre-view.css";
+import { PropTypes } from "prop-types";
+import "./genreview.scss";
 
-const GenreView = ({ genreId }) => {
+export const GenreView = ({ genreId }) => {
   const [genre, setGenre] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -40,8 +40,8 @@ const GenreView = ({ genreId }) => {
   );
 };
 
-GenreView.propTypes = {
-  genreId: propTypes.string.isRequired,
+GenreView.PropTypesTypes = {
+  genreId: PropTypes.string.isRequired,
 };
 
 export default GenreView;

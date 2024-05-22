@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "./profile-view.scss";
+import "./profileview.scss";
 
-const ProfileView = () => {
+export const ProfileView = () => {
   // Initial state for the user object
   const [user, setUser] = useState({
     Username: "",

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import "./loginview.scss";
 
-const LoginView = () => {
+export const LoginView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
