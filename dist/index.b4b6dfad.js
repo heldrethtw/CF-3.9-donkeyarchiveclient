@@ -2963,7 +2963,7 @@ const DonkeyArchive = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "Donkey-Archive",
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                 children: "Donkey Archive"
             }, void 0, false, {
                 fileName: "src/index.jsx",
@@ -29305,8 +29305,8 @@ const MainView = ()=>{
                 lineNumber: 8,
                 columnNumber: 7
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                children: "Main View"
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: "WELCOME EQUIDAE!"
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
                 lineNumber: 9,

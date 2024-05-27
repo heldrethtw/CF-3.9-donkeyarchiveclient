@@ -7,7 +7,7 @@ import { MainView } from "./components/MainView/main-view";
 const DonkeyArchive = () => {
   return (
     <div className="Donkey-Archive">
-      <h1>Donkey Archive</h1>
+      <span>Donkey Archive</span>
       <MainView />
     </div>
   );

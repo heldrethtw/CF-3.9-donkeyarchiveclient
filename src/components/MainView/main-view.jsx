@@ -6,7 +6,7 @@ export const MainView = () => {
   return (
     <div className="Main-View">
       <Navbar />
-      <h1>Main View</h1>
+      <p>WELCOME EQUIDAE!</p>
     </div>
   );
 };
