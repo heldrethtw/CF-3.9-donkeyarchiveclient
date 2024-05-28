@@ -1,13 +1,12 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import "./index.scss";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { MainView } from "./components/MainView/main-view";
+import MainView from "./components/MainView/MainView";
 
 const DonkeyArchive = () => {
   return (
     <div className="Donkey-Archive">
-      <span>Donkey Archive</span>
+      <span className="title">Donkey Archive</span>
       <MainView />
     </div>
   );

@@ -1,33 +1,49 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./NavBar.scss";
 
-class NavBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loggedIn: false,
-    };
-  }
+const NavBar = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
 
-  handleLogin = () => {
-    this.setState({ loggedIn: true });
+  useEffect(() => {
+    setLoggedIn(!!localStorage.getItem("token"));
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      await axios.post(
+        "https://donkey-archive-af41e8314602.herokuapp.com/api/auth/logout",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      localStorage.removeItem("token");
+      setLoggedIn(false);
+      window.location.reload();
+    } catch (err) {
+      console.error("Error logging out", err);
+    }
   };
 
-  handleLogout = () => {
-    this.setState({ loggedIn: false });
-  };
-
-  render() {
-    const { loggedIn } = this.state;
-    return (
-      <div>
-        {loggedIn ? (
-          <button onClick={this.handleLogout}>Logout</button>
-        ) : (
-          <button onClick={this.handleLogin}>Login</button>
-        )}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="navbar">
+      {loggedIn ? (
+        <button className="logout" onClick={handleLogout}>
+          Logout
+        </button>
+      ) : (
+        <button
+          className="login"
+          onClick={() => (window.location.href = "/login")}
+        >
+          Login
+        </button>
+      )}
+    </div>
+  );
+};
 
 export default NavBar;

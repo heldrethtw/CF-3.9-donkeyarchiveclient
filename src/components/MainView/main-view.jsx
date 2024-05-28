@@ -1,12 +1,12 @@
 import React from "react";
-import Navbar from "../NavBar/NavBar";
+import { NavBar } from "../NavBar/NavBar";
 
 export const MainView = () => {
   console.log("MainView");
   return (
     <div className="Main-View">
-      <Navbar />
-      <p>WELCOME EQUIDAE!</p>
+      <NavBar />
+      <h1>Main View</h1>
     </div>
   );
 };
