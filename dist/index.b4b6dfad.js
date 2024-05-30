@@ -27254,56 +27254,89 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactRouterDom = require("react-router-dom");
 var _navBar = require("../NavBar/NavBar");
 var _navBarDefault = parcelHelpers.interopDefault(_navBar);
-var _reactRouterDom = require("react-router-dom");
 var _loginView = require("../LoginView/LoginView");
 var _loginViewDefault = parcelHelpers.interopDefault(_loginView);
-const MainView = ()=>(console.log("MainView"), /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.BrowserRouter), {
+var _registrationView = require("../RegistrationView/RegistrationView");
+var _registrationViewDefault = parcelHelpers.interopDefault(_registrationView);
+var _s = $RefreshSig$();
+const MainView = ()=>{
+    _s();
+    const [loggedIn, setLoggedIn] = (0, _react.useState)(false);
+    (0, _react.useEffect)(()=>{
+        const token = localStorage.getItem("token");
+        setLoggedIn(!!token);
+        console.log("Token in localStorage: ", token);
+        console.log("Logged in state:", !!token);
+    }, []);
+    const handleLogout = ()=>{
+        setLoggedIn(false);
+        localStorage.removeItem("token");
+        window.location.reload();
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.BrowserRouter), {
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navBarDefault.default), {}, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navBarDefault.default), {
+                loggedIn: loggedIn,
+                handleLogout: handleLogout
+            }, void 0, false, {
                 fileName: "src/components/MainView/MainView.jsx",
-                lineNumber: 10,
+                lineNumber: 25,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Routes), {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                         path: "/login",
-                        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginViewDefault.default), {}, void 0, false, {
+                        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginViewDefault.default), {
+                            setLoggedIn: setLoggedIn
+                        }, void 0, false, {
                             fileName: "src/components/MainView/MainView.jsx",
-                            lineNumber: 12,
-                            columnNumber: 39
+                            lineNumber: 29,
+                            columnNumber: 20
                         }, void 0)
                     }, void 0, false, {
                         fileName: "src/components/MainView/MainView.jsx",
-                        lineNumber: 12,
+                        lineNumber: 27,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
-                        path: "/logout",
-                        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginViewDefault.default), {}, void 0, false, {
+                        path: "/register",
+                        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _registrationViewDefault.default), {
+                            setLoggedIn: setLoggedIn
+                        }, void 0, false, {
                             fileName: "src/components/MainView/MainView.jsx",
-                            lineNumber: 13,
-                            columnNumber: 40
+                            lineNumber: 33,
+                            columnNumber: 20
                         }, void 0)
                     }, void 0, false, {
                         fileName: "src/components/MainView/MainView.jsx",
-                        lineNumber: 13,
+                        lineNumber: 31,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/MainView/MainView.jsx",
-                lineNumber: 11,
+                lineNumber: 26,
                 columnNumber: 7
+            }, undefined),
+            !loggedIn && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginViewDefault.default), {
+                setLoggedIn: setLoggedIn
+            }, void 0, false, {
+                fileName: "src/components/MainView/MainView.jsx",
+                lineNumber: 36,
+                columnNumber: 21
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/MainView/MainView.jsx",
-        lineNumber: 9,
+        lineNumber: 24,
         columnNumber: 5
-    }, undefined));
+    }, undefined);
+};
+_s(MainView, "8ySMdZGY74HFzvXtK44+NjqgpXQ=");
 _c = MainView;
 exports.default = MainView;
 var _c;
@@ -27314,7 +27347,7 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../NavBar/NavBar":"1Y42F","react-router-dom":"9xmpe","../LoginView/LoginView":"7GV9H","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"1Y42F":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../NavBar/NavBar":"1Y42F","react-router-dom":"9xmpe","../LoginView/LoginView":"7GV9H","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../RegistrationView/RegistrationView":"1stjD"}],"1Y42F":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$2de2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27329,25 +27362,15 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _navBarScss = require("./NavBar.scss");
-var _s = $RefreshSig$();
-const NavBar = ()=>{
-    _s();
-    const [loggedIn, setLoggedIn] = (0, _react.useState)(false);
-    (0, _react.useEffect)(()=>{
-        setLoggedIn(!!localStorage.getItem("token"));
-    }, []);
-    const handleLogout = async ()=>{
+var _reactRouterDom = require("react-router-dom");
+const NavBar = ({ loggedIn, handleLogout })=>{
+    const handleLogin = async ()=>{
         try {
-            await (0, _axiosDefault.default).post("https://donkey-archive-af41e8314602.herokuapp.com/api/auth/logout", {}, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
-                }
-            });
-            localStorage.removeItem("token");
-            setLoggedIn(false);
+            const response = await (0, _axiosDefault.default).post("https://donkey-archive-af41e8314602.herokuapp.com/api/auth/login");
+            localStorage.setItem("token", response.data.token);
             window.location.reload();
         } catch (err) {
-            console.error("Error logging out", err);
+            console.error("Error logging in", err);
         }
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27358,24 +27381,36 @@ const NavBar = ()=>{
             children: "Logout"
         }, void 0, false, {
             fileName: "src/components/NavBar/NavBar.jsx",
-            lineNumber: 34,
+            lineNumber: 22,
             columnNumber: 9
-        }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-            className: "login",
-            onClick: ()=>window.location.href = "/login",
-            children: "Login"
-        }, void 0, false, {
-            fileName: "src/components/NavBar/NavBar.jsx",
-            lineNumber: 38,
-            columnNumber: 9
-        }, undefined)
+        }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    className: "login",
+                    onClick: handleLogin,
+                    children: "Login"
+                }, void 0, false, {
+                    fileName: "src/components/NavBar/NavBar.jsx",
+                    lineNumber: 27,
+                    columnNumber: 11
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                    to: "/register",
+                    className: "register-link",
+                    children: "Register"
+                }, void 0, false, {
+                    fileName: "src/components/NavBar/NavBar.jsx",
+                    lineNumber: 30,
+                    columnNumber: 11
+                }, undefined)
+            ]
+        }, void 0, true)
     }, void 0, false, {
         fileName: "src/components/NavBar/NavBar.jsx",
-        lineNumber: 32,
+        lineNumber: 20,
         columnNumber: 5
     }, undefined);
 };
-_s(NavBar, "8ySMdZGY74HFzvXtK44+NjqgpXQ=");
 _c = NavBar;
 exports.default = NavBar;
 var _c;
@@ -27386,7 +27421,7 @@ $RefreshReg$(_c, "NavBar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","axios":"jo6P5","./NavBar.scss":"exwgb","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jo6P5":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","axios":"jo6P5","./NavBar.scss":"exwgb","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-router-dom":"9xmpe"}],"jo6P5":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _axiosJsDefault.default));
@@ -38962,8 +38997,6 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
-var _navBar = require("../NavBar/NavBar");
-var _navBarDefault = parcelHelpers.interopDefault(_navBar);
 var _loginViewScss = require("./LoginView.scss");
 var _s = $RefreshSig$();
 const LoginView = ()=>{
@@ -38971,72 +39004,67 @@ const LoginView = ()=>{
     const [username, setUsername] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
     const [error, setError] = (0, _react.useState)("");
-    const handleLogin = async ()=>{
+    const handleLogin = async (e)=>{
         e.preventDefault();
         try {
-            const response = await (0, _axiosDefault.default).post("https://donkey-archive-af41e8314602.herokuapp.com/api/auth/login");
+            const response = await (0, _axiosDefault.default).post("https://donkey-archive-af41e8314602.herokuapp.com/api/auth/login", {
+                username,
+                password
+            });
             localStorage.setItem("token", response.data.token);
-            window.location.reload();
+            setLoggedIn(true);
         } catch (err) {
-            setError("Error logging in");
+            setError("Invalid username or password");
         }
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "login-view",
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navBarDefault.default), {}, void 0, false, {
-                fileName: "src/components/LoginView/LoginView.jsx",
-                lineNumber: 26,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
-                className: "login-form",
-                onSubmit: handleLogin,
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "text",
-                        placeholder: "Username",
-                        value: username,
-                        onChange: (e1)=>setUsername(e1.target.value)
-                    }, void 0, false, {
-                        fileName: "src/components/LoginView/LoginView.jsx",
-                        lineNumber: 28,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "password",
-                        placeholder: "Password",
-                        value: password,
-                        onChange: (e1)=>setPassword(e1.target.value)
-                    }, void 0, false, {
-                        fileName: "src/components/LoginView/LoginView.jsx",
-                        lineNumber: 34,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        type: "submit",
-                        children: "Login"
-                    }, void 0, false, {
-                        fileName: "src/components/LoginView/LoginView.jsx",
-                        lineNumber: 40,
-                        columnNumber: 9
-                    }, undefined),
-                    error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        className: "error",
-                        children: error
-                    }, void 0, false, {
-                        fileName: "src/components/LoginView/LoginView.jsx",
-                        lineNumber: 41,
-                        columnNumber: 19
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/LoginView/LoginView.jsx",
-                lineNumber: 27,
-                columnNumber: 7
-            }, undefined)
-        ]
-    }, void 0, true, {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+            onSubmit: handleLogin,
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                    type: "text",
+                    placeholder: "Username",
+                    value: username,
+                    onChange: (e)=>setUsername(e.target.value)
+                }, void 0, false, {
+                    fileName: "src/components/LoginView/LoginView.jsx",
+                    lineNumber: 27,
+                    columnNumber: 9
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                    type: "password",
+                    placeholder: "Password",
+                    value: password,
+                    onChange: (e)=>setPassword(e.target.value)
+                }, void 0, false, {
+                    fileName: "src/components/LoginView/LoginView.jsx",
+                    lineNumber: 33,
+                    columnNumber: 9
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    type: "submit",
+                    children: "Login"
+                }, void 0, false, {
+                    fileName: "src/components/LoginView/LoginView.jsx",
+                    lineNumber: 39,
+                    columnNumber: 9
+                }, undefined),
+                error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                    className: "error",
+                    children: error
+                }, void 0, false, {
+                    fileName: "src/components/LoginView/LoginView.jsx",
+                    lineNumber: 40,
+                    columnNumber: 19
+                }, undefined)
+            ]
+        }, void 0, true, {
+            fileName: "src/components/LoginView/LoginView.jsx",
+            lineNumber: 26,
+            columnNumber: 7
+        }, undefined)
+    }, void 0, false, {
         fileName: "src/components/LoginView/LoginView.jsx",
         lineNumber: 25,
         columnNumber: 5
@@ -39053,6 +39081,139 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","axios":"jo6P5","./LoginView.scss":"1kBZk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../NavBar/NavBar":"1Y42F"}],"1kBZk":[function() {},{}]},["gjUm6","1xC6H","d8Dch"], "d8Dch", "parcelRequire1885")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","axios":"jo6P5","./LoginView.scss":"1kBZk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"1kBZk":[function() {},{}],"1stjD":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$9f94 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$9f94.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
+var _registrationViewScss = require("./RegistrationView.scss");
+var _s = $RefreshSig$();
+const RegistrationView = ({ setLoggedIn })=>{
+    _s();
+    const [username, setUsername] = (0, _react.useState)("");
+    const [password, setPassword] = (0, _react.useState)("");
+    const [email, setEmail] = (0, _react.useState)("");
+    const [birth, setBirth] = (0, _react.useState)("");
+    const [error, setError] = (0, _react.useState)("");
+    const [success, setSuccess] = (0, _react.useState)("");
+    const handleRegister = async (e)=>{
+        e.preventDefault();
+        try {
+            const response = await (0, _axiosDefault.default).post("https://donkey-archive-af41e8314602.herokuapp.com/api/auth/register", {
+                username,
+                password,
+                email,
+                birth
+            });
+            localStorage.setItem("token", response.data.token);
+            setLoggedIn(true);
+            setSuccess("Registration successful! You are now logged in.");
+        } catch (err) {
+            setError("Username or email already exists");
+        }
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "registration-view",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+            className: "registration-form",
+            onSubmit: handleRegister,
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                    type: "text",
+                    placeholder: "Username",
+                    value: username,
+                    onChange: (e)=>setUsername(e.target.value)
+                }, void 0, false, {
+                    fileName: "src/components/RegistrationView/RegistrationView.jsx",
+                    lineNumber: 31,
+                    columnNumber: 9
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                    type: "password",
+                    placeholder: "Password",
+                    value: password,
+                    onChange: (e)=>setPassword(e.target.value)
+                }, void 0, false, {
+                    fileName: "src/components/RegistrationView/RegistrationView.jsx",
+                    lineNumber: 37,
+                    columnNumber: 9
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                    type: "Birth",
+                    placeholder: "Birth",
+                    value: birth,
+                    onChange: (e)=>setBirth(e.target.value)
+                }, void 0, false, {
+                    fileName: "src/components/RegistrationView/RegistrationView.jsx",
+                    lineNumber: 43,
+                    columnNumber: 9
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                    type: "email",
+                    placeholder: "Email",
+                    value: email,
+                    onChange: (e)=>setEmail(e.target.value)
+                }, void 0, false, {
+                    fileName: "src/components/RegistrationView/RegistrationView.jsx",
+                    lineNumber: 49,
+                    columnNumber: 9
+                }, undefined),
+                error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                    className: "error",
+                    children: error
+                }, void 0, false, {
+                    fileName: "src/components/RegistrationView/RegistrationView.jsx",
+                    lineNumber: 55,
+                    columnNumber: 19
+                }, undefined),
+                success && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                    className: "success",
+                    children: success
+                }, void 0, false, {
+                    fileName: "src/components/RegistrationView/RegistrationView.jsx",
+                    lineNumber: 56,
+                    columnNumber: 21
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    type: "submit",
+                    children: "Register"
+                }, void 0, false, {
+                    fileName: "src/components/RegistrationView/RegistrationView.jsx",
+                    lineNumber: 57,
+                    columnNumber: 9
+                }, undefined)
+            ]
+        }, void 0, true, {
+            fileName: "src/components/RegistrationView/RegistrationView.jsx",
+            lineNumber: 30,
+            columnNumber: 7
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/components/RegistrationView/RegistrationView.jsx",
+        lineNumber: 29,
+        columnNumber: 5
+    }, undefined);
+};
+_s(RegistrationView, "Uf7dy7bfZAuGeRNqEwc2wS6EJwo=");
+_c = RegistrationView;
+exports.default = RegistrationView;
+var _c;
+$RefreshReg$(_c, "RegistrationView");
+
+  $parcel$ReactRefreshHelpers$9f94.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","axios":"jo6P5","./RegistrationView.scss":"9z0le","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"9z0le":[function() {},{}]},["gjUm6","1xC6H","d8Dch"], "d8Dch", "parcelRequire1885")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

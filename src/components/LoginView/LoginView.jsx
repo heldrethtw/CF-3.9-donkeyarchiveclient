@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import NavBar from "../NavBar/NavBar";
 import "./LoginView.scss";
 
 const LoginView = () => {
@@ -8,23 +7,23 @@ const LoginView = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://donkey-archive-af41e8314602.herokuapp.com/api/auth/login"
+        "https://donkey-archive-af41e8314602.herokuapp.com/api/auth/login",
+        { username, password }
       );
       localStorage.setItem("token", response.data.token);
-      window.location.reload();
+      setLoggedIn(true);
     } catch (err) {
-      setError("Error logging in");
+      setError("Invalid username or password");
     }
   };
 
   return (
     <div className="login-view">
-      <NavBar />
-      <form className="login-form" onSubmit={handleLogin}>
+      <form onSubmit={handleLogin}>
         <input
           type="text"
           placeholder="Username"

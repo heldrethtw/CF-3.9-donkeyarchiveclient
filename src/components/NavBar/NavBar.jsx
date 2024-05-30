@@ -1,30 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./NavBar.scss";
+import { Link } from "react-router-dom";
 
-const NavBar = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
-
-  useEffect(() => {
-    setLoggedIn(!!localStorage.getItem("token"));
-  }, []);
-
-  const handleLogout = async () => {
+const NavBar = ({ loggedIn, handleLogout }) => {
+  const handleLogin = async () => {
     try {
-      await axios.post(
-        "https://donkey-archive-af41e8314602.herokuapp.com/api/auth/logout",
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
+      const response = await axios.post(
+        "https://donkey-archive-af41e8314602.herokuapp.com/api/auth/login"
       );
-      localStorage.removeItem("token");
-      setLoggedIn(false);
+      localStorage.setItem("token", response.data.token);
       window.location.reload();
     } catch (err) {
-      console.error("Error logging out", err);
+      console.error("Error logging in", err);
     }
   };
 
@@ -35,12 +23,14 @@ const NavBar = () => {
           Logout
         </button>
       ) : (
-        <button
-          className="login"
-          onClick={() => (window.location.href = "/login")}
-        >
-          Login
-        </button>
+        <>
+          <button className="login" onClick={handleLogin}>
+            Login
+          </button>
+          <Link to="/register" className="register-link">
+            Register
+          </Link>
+        </>
       )}
     </div>
   );

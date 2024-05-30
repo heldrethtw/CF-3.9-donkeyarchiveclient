@@ -1,0 +1,23 @@
+{
+    "transformers": {
+        "*.scss": ["@parcel/transformer-sass"]
+    },
+    "resolvers": ["@parcel/resolver-default"],
+        "bundler": "@parcel/bundler-default",
+            "namers": ["@parcel/namer-default"],
+                "runtimes": {
+        "browser": ["@parcel/runtime-js", "@parcel/runtime-react-refresh"],
+            "node": ["@parcel/runtime-js"],
+                "isolate": ["@parcel/runtime-js"]
+    },
+    "packagers": ["@parcel/packager-js", "@parcel/packager-css", "@parcel/packager-html"],
+        "optimizers": {
+        "*.{js,css,html,svg}": ["@parcel/optimizer-terser", "@parcel/optimizer-cssnano", "@parcel/optimizer-htmlnano"],
+            "*.js": ["@parcel/optimizer-babel-minify"]
+    },
+    "loaders": {
+        "*.{js,jsx}": ["@parcel/loader-js"],
+            "*.wasm": ["@parcel/loader-wasm"],
+                "*.{css,html,svg}": ["@parcel/loader-css", "@parcel/loader-html", "@parcel/loader-svg"]
+    }
+}
