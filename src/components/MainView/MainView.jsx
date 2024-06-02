@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Navbar from "../NavBar/NavBar";
+import NavBar from "../NavBar/NavBar";
 import LoginView from "../LoginView/LoginView";
 import RegistrationView from "../RegistrationView/RegistrationView";
+import ProfileView from "../ProfileView/ProfileView";
 
 const MainView = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -22,7 +23,7 @@ const MainView = () => {
 
   return (
     <Router>
-      <Navbar loggedIn={loggedIn} handleLogout={handleLogout} />
+      <NavBar loggedIn={loggedIn} handleLogout={handleLogout} />
       <Routes>
         <Route
           path="/login"

@@ -29,5 +29,14 @@
         background-color: #23c8a1;
       }
     }
+
+    &.register {
+      background-color: #6c757d;
+      color: #fff;
+
+      &:hover {
+        background-color: #343a40;
+      }
+    }
   }
 }

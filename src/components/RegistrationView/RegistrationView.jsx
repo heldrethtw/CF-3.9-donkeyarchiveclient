@@ -1,62 +1,95 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { Form, Button, Alert, Container, Row, Col } from "react-bootstrap";
 import "./RegistrationView.scss";
 
 const RegistrationView = ({ setLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [birth, setBirth] = useState("");
+  const [birth, setBirth] = useState("1976-02-22");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "https://donkey-archive-af41e8314602.herokuapp.com/api/auth/register",
-        { username, password, email, birth }
+      const data = {
+        username: username,
+        password: password,
+        email: email,
+        birth: birth,
+      };
+
+      const response = await fetch(
+        "https://donkey-archive-af41e8314602.herokuapp.com/api/auth/users",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
       );
-      localStorage.setItem("token", response.data.token);
-      setLoggedIn(true);
-      setSuccess("Registration successful! You are now logged in.");
+
+      if (response.ok) {
+        const responseData = await response.json();
+        localStorage.setItem("token", responseData.token);
+        setLoggedIn(true);
+        setSuccess("Registration successful! You are now logged in.");
+      } else {
+        setError("Error registering");
+      }
     } catch (err) {
-      setError("Username or email already exists");
+      console.log(err);
+      setError("Error registering");
     }
   };
 
   return (
-    <div className="registration-view">
-      <form className="registration-form" onSubmit={handleRegister}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input
-          type="Birth"
-          placeholder="Birth"
-          value={birth}
-          onChange={(e) => setBirth(e.target.value)}
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        {error && <span className="error">{error}</span>}
-        {success && <span className="success">{success}</span>}
-        <button type="submit">Register</button>
-      </form>
-    </div>
+    <Container className="registration-view">
+      <Row className="justify-content-md-center">
+        <Col md={6}>
+          <Form className="registration-form" onSubmit={handleRegister}>
+            <Form.Group controlId="formRegistrationUsername">
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formRegistrationEmail">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formRegistrationPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
+
+            {error && <Alert variant="danger">{error}</Alert>}
+            {success && <Alert variant="success">{success}</Alert>}
+
+            <Button variant="primary" type="submit">
+              Register
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
