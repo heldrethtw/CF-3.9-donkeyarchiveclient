@@ -46411,7 +46411,8 @@ const RegistrationView = ({ setLoggedIn })=>{
             const response = await fetch("https://donkey-archive-af41e8314602.herokuapp.com/api/auth/users", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "http://localhost:1234"
                 },
                 body: JSON.stringify(data)
             });
@@ -46443,7 +46444,7 @@ const RegistrationView = ({ setLoggedIn })=>{
                                     children: "Username"
                                 }, void 0, false, {
                                     fileName: "src/components/RegistrationView/RegistrationView.jsx",
-                                    lineNumber: 54,
+                                    lineNumber: 55,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -46453,13 +46454,13 @@ const RegistrationView = ({ setLoggedIn })=>{
                                     onChange: (e)=>setUsername(e.target.value)
                                 }, void 0, false, {
                                     fileName: "src/components/RegistrationView/RegistrationView.jsx",
-                                    lineNumber: 55,
+                                    lineNumber: 56,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/RegistrationView/RegistrationView.jsx",
-                            lineNumber: 53,
+                            lineNumber: 54,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
@@ -46469,7 +46470,7 @@ const RegistrationView = ({ setLoggedIn })=>{
                                     children: "Email"
                                 }, void 0, false, {
                                     fileName: "src/components/RegistrationView/RegistrationView.jsx",
-                                    lineNumber: 64,
+                                    lineNumber: 65,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -46479,13 +46480,13 @@ const RegistrationView = ({ setLoggedIn })=>{
                                     onChange: (e)=>setEmail(e.target.value)
                                 }, void 0, false, {
                                     fileName: "src/components/RegistrationView/RegistrationView.jsx",
-                                    lineNumber: 65,
+                                    lineNumber: 66,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/RegistrationView/RegistrationView.jsx",
-                            lineNumber: 63,
+                            lineNumber: 64,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
@@ -46495,7 +46496,7 @@ const RegistrationView = ({ setLoggedIn })=>{
                                     children: "Password"
                                 }, void 0, false, {
                                     fileName: "src/components/RegistrationView/RegistrationView.jsx",
-                                    lineNumber: 74,
+                                    lineNumber: 75,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -46505,13 +46506,13 @@ const RegistrationView = ({ setLoggedIn })=>{
                                     onChange: (e)=>setPassword(e.target.value)
                                 }, void 0, false, {
                                     fileName: "src/components/RegistrationView/RegistrationView.jsx",
-                                    lineNumber: 75,
+                                    lineNumber: 76,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/RegistrationView/RegistrationView.jsx",
-                            lineNumber: 73,
+                            lineNumber: 74,
                             columnNumber: 13
                         }, undefined),
                         error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Alert), {
@@ -46519,7 +46520,7 @@ const RegistrationView = ({ setLoggedIn })=>{
                             children: error
                         }, void 0, false, {
                             fileName: "src/components/RegistrationView/RegistrationView.jsx",
-                            lineNumber: 83,
+                            lineNumber: 84,
                             columnNumber: 23
                         }, undefined),
                         success && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Alert), {
@@ -46527,7 +46528,7 @@ const RegistrationView = ({ setLoggedIn })=>{
                             children: success
                         }, void 0, false, {
                             fileName: "src/components/RegistrationView/RegistrationView.jsx",
-                            lineNumber: 84,
+                            lineNumber: 85,
                             columnNumber: 25
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -46536,28 +46537,28 @@ const RegistrationView = ({ setLoggedIn })=>{
                             children: "Register"
                         }, void 0, false, {
                             fileName: "src/components/RegistrationView/RegistrationView.jsx",
-                            lineNumber: 86,
+                            lineNumber: 87,
                             columnNumber: 13
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/RegistrationView/RegistrationView.jsx",
-                    lineNumber: 52,
+                    lineNumber: 53,
                     columnNumber: 11
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/RegistrationView/RegistrationView.jsx",
-                lineNumber: 51,
+                lineNumber: 52,
                 columnNumber: 9
             }, undefined)
         }, void 0, false, {
             fileName: "src/components/RegistrationView/RegistrationView.jsx",
-            lineNumber: 50,
+            lineNumber: 51,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/RegistrationView/RegistrationView.jsx",
-        lineNumber: 49,
+        lineNumber: 50,
         columnNumber: 5
     }, undefined);
 };

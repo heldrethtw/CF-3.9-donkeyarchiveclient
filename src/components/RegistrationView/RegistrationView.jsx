@@ -26,6 +26,7 @@ const RegistrationView = ({ setLoggedIn }) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "http://localhost:1234",
           },
           body: JSON.stringify(data),
         }
