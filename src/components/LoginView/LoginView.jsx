@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axiosInstance from "../../axiosInstance"; // Import the configured axios instance
+//import axiosInstance from "../../axiosInstance"; // Import the configured axios instance
 import { Form, Button, Alert, Container, Row, Col } from "react-bootstrap";
 import "./LoginView.scss";
 
@@ -11,10 +11,13 @@ const LoginView = ({ setLoggedIn }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axiosInstance.post("/api/auth/login", {
-        username,
-        password,
-      });
+      const response = await axiosInstance.post(
+        "https://donkey-archive-af41e8314602.herokuapp.com/api/auth/login",
+        {
+          username,
+          password,
+        }
+      );
       localStorage.setItem("token", response.data.token);
       setLoggedIn(true);
     } catch (err) {

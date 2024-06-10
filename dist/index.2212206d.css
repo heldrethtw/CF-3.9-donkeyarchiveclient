@@ -1,145 +1,3 @@
-.Donkey-Archive {
-  color: #4682b4;
-}
-
-.title {
-  text-align: center;
-  font-size: larger;
-}
-
-.login-view {
-  background-color: #f5f5f5;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  display: flex;
-}
-
-.login-view h2 {
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.login-view form {
-  flex-direction: column;
-  display: flex;
-}
-
-.login-view div {
-  margin-bottom: 1rem;
-}
-
-.login-view label {
-  margin-bottom: .5rem;
-  font-weight: bold;
-}
-
-.login-view input {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: .5rem;
-}
-
-.login-view .error {
-  color: red;
-  margin-bottom: 1rem;
-}
-
-.login-view button {
-  color: #fff;
-  cursor: pointer;
-  background-color: #007bff;
-  border-radius: 5px;
-  padding: .5rem;
-  font-size: 1rem;
-}
-
-.login-view button:hover {
-  background-color: #0056b3;
-}
-
-.registration-view {
-  background-color: #f5f5f5;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-}
-
-.registration-form {
-  background-color: #fff;
-  border-radius: 10px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 400px;
-  height: 400px;
-  display: flex;
-  box-shadow: 0 0 10px #0000001a;
-}
-
-.registration-form input {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 80%;
-  height: 40px;
-  margin: 10px 0;
-  padding: 0 10px;
-}
-
-.registration-form button {
-  cursor: pointer;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  width: 80%;
-  height: 40px;
-  margin: 10px 0;
-  padding: 0 10px;
-  font-size: 16px;
-}
-
-.registration-form button:hover {
-  background-color: #c7b6c7;
-}
-
-.error {
-  color: red;
-  margin: 0;
-  padding: 0;
-  font-size: 12px;
-}
-
-.success {
-  color: green;
-  margin: 0;
-  padding: 0;
-  font-size: 12px;
-}
-
-.profile-view {
-  background-color: #f5f5f5;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  display: flex;
-}
-
-.profile-view h2 {
-  margin-bottom: 20px;
-}
-
-.profile-view .form-control {
-  margin-bottom: 15px;
-}
-
-.profile-view .btn-primary {
-  margin-top: 10px;
-}
-
 :root, [data-bs-theme="light"] {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -13470,5 +13328,147 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+
+.Donkey-Archive {
+  color: #4682b4;
+}
+
+.title {
+  text-align: center;
+  font-size: larger;
+}
+
+.login-view {
+  background-color: #f5f5f5;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  display: flex;
+}
+
+.login-view h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.login-view form {
+  flex-direction: column;
+  display: flex;
+}
+
+.login-view div {
+  margin-bottom: 1rem;
+}
+
+.login-view label {
+  margin-bottom: .5rem;
+  font-weight: bold;
+}
+
+.login-view input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: .5rem;
+}
+
+.login-view .error {
+  color: red;
+  margin-bottom: 1rem;
+}
+
+.login-view button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #007bff;
+  border-radius: 5px;
+  padding: .5rem;
+  font-size: 1rem;
+}
+
+.login-view button:hover {
+  background-color: #0056b3;
+}
+
+.registration-view {
+  background-color: #f5f5f5;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.registration-form {
+  background-color: #fff;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  box-shadow: 0 0 10px #0000001a;
+}
+
+.registration-form input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 80%;
+  height: 40px;
+  margin: 10px 0;
+  padding: 0 10px;
+}
+
+.registration-form button {
+  cursor: pointer;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  width: 80%;
+  height: 40px;
+  margin: 10px 0;
+  padding: 0 10px;
+  font-size: 16px;
+}
+
+.registration-form button:hover {
+  background-color: #c7b6c7;
+}
+
+.error {
+  color: red;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+
+.success {
+  color: green;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+
+.profile-view {
+  background-color: #f5f5f5;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  display: flex;
+}
+
+.profile-view h2 {
+  margin-bottom: 20px;
+}
+
+.profile-view .form-control {
+  margin-bottom: 15px;
+}
+
+.profile-view .btn-primary {
+  margin-top: 10px;
 }
 /*# sourceMappingURL=index.2212206d.css.map */

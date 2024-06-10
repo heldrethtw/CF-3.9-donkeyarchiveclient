@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
-import axiosInstance from "../../axiosInstance";
+//import axiosInstance from "../../axiosInstance";
 import "./ProfileView.scss";
 
 const ProfileView = () => {

@@ -1,6 +1,8 @@
 {
     "transformers": {
-        "*.scss": ["@parcel/transformer-sass"]
+        "*.scss": ["@parcel/transformer-sass"],
+            "*.tsx": ["@parcel/transformer-typescript"],
+                "*.ts": ["@parcel/transformer-typescript"]
     },
     "resolvers": ["@parcel/resolver-default"],
         "bundler": "@parcel/bundler-default",
@@ -19,5 +21,14 @@
         "*.{js,jsx}": ["@parcel/loader-js"],
             "*.wasm": ["@parcel/loader-wasm"],
                 "*.{css,html,svg}": ["@parcel/loader-css", "@parcel/loader-html", "@parcel/loader-svg"]
+    },
+    "watcher": {
+        "exclude": [
+            "**/node_modules/**",
+            "**/.git/**",
+            "**/.log/**",
+            "**/.tmp-/**"
+        ]
     }
+
 }

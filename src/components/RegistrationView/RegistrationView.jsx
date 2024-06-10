@@ -6,18 +6,20 @@ const RegistrationView = ({ setLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [birth, setBirth] = useState("1976-02-22");
+  const [birth, setBirth] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
+      const formattedBirth = birth.split("/").reverse().join("-");
+      console.log("Formatted Birth Date: ", formattedBirth);
       const data = {
-        username: username,
-        password: password,
-        email: email,
-        birth: birth,
+        Username: username,
+        Password: password,
+        Email: email,
+        Birthday: formattedBirth,
       };
 
       const response = await fetch(
@@ -78,6 +80,15 @@ const RegistrationView = ({ setLoggedIn }) => {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formRegistrationBirth">
+              <Form.Label>Date of Birth</Form.Label>
+              <Form.Control
+                type="date"
+                value={birth}
+                onChange={(e) => setBirth(e.target.value)}
               />
             </Form.Group>
 

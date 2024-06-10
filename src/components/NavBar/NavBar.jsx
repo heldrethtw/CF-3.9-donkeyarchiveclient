@@ -1,12 +1,23 @@
 import React from "react";
 import { Navbar, Nav, Button } from "react-bootstrap";
-import axiosInstance from "../../axiosInstance";
+//import axiosInstance from "../../axiosInstance";
 import { LinkContainer } from "react-router-bootstrap";
 
 const NavBar = ({ loggedIn, handleLogout }) => {
   const handleLogin = async () => {
     try {
-      const response = await axiosInstance.post("/api/auth/login");
+      const response = await fetch(
+        "https://donkey-archive-af41e8314602.herokuapp.com/api/auth/login",
+        {
+          username: "user",
+          password: "password",
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "http://localhost:1234",
+          },
+        }
+      );
       localStorage.setItem("token", response.data.token);
       window.location.reload();
     } catch (err) {
