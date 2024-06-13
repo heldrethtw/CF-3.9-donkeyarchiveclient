@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import LoginView from "../LoginView/LoginView";
 import RegistrationView from "../RegistrationView/RegistrationView";
@@ -25,16 +30,25 @@ const MainView = () => {
     <Router>
       <NavBar loggedIn={loggedIn} handleLogout={handleLogout} />
       <Routes>
-        <Route
-          path="/login"
-          element={<LoginView setLoggedIn={setLoggedIn} />}
-        />
-        <Route
-          path="/register"
-          element={<RegistrationView setLoggedIn={setLoggedIn} />}
-        />
+        {!loggedIn ? (
+          <>
+            <Route
+              path="/login"
+              element={<LoginView setLoggedIn={setLoggedIn} />}
+            />
+            <Route
+              path="/register"
+              element={<RegistrationView setLoggedIn={setLoggedIn} />}
+            />
+            <Route path="*" element={<Navigate to="/login" />} />
+          </>
+        ) : (
+          <>
+            <Route path="/profile" element={<ProfileView />} />
+            <Route path="*" element={<Navigate to="/profile" />} />
+          </>
+        )}
       </Routes>
-      {!loggedIn && <LoginView setLoggedIn={setLoggedIn} />}
     </Router>
   );
 };

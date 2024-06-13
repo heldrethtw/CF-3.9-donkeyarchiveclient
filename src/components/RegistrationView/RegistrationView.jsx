@@ -13,13 +13,11 @@ const RegistrationView = ({ setLoggedIn }) => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const formattedBirth = birth.split("/").reverse().join("-");
-      console.log("Formatted Birth Date: ", formattedBirth);
       const data = {
         Username: username,
         Password: password,
         Email: email,
-        Birthday: formattedBirth,
+        Birthday: birth,
       };
 
       const response = await fetch(
@@ -34,13 +32,33 @@ const RegistrationView = ({ setLoggedIn }) => {
         }
       );
 
+      let responseData;
+      const contentType = response.headers.get("content-type");
+
+      if (contentType && contentType.indexOf("application/json") !== -1) {
+        responseData = await response.json();
+      } else {
+        responseData = await response.text();
+      }
+
       if (response.ok) {
-        const responseData = await response.json();
         localStorage.setItem("token", responseData.token);
         setLoggedIn(true);
         setSuccess("Registration successful! You are now logged in.");
       } else {
-        setError("Error registering");
+        try {
+          const errorData = await response.json();
+          console.log("Registration Error:", errorData);
+          setError(
+            `Error registering: ${errorData.errors
+              .map((err) => err.msg)
+              .join(", ")}`
+          );
+        } catch (jsonError) {
+          const errorText = await response.text();
+          console.log("Registration Error:", errorText);
+          setError(`Error registering: ${errorText}`);
+        }
       }
     } catch (err) {
       console.log(err);
