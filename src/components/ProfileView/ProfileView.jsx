@@ -36,10 +36,11 @@ const ProfileView = () => {
   // Handle profile update
   const handleUpdateProfile = async (e) => {
     e.preventDefault();
+    console.log("Update profile request initiated");
     try {
       const token = localStorage.getItem("token");
       const response = await axios.put(
-        `/api/auth/users/${profileData.Username}`,
+        `https://donkey-archive-af41e8314602.herokuapp.com/api/auth/users/${profileData.Username}`,
         {
           Username: profileData.Username,
           Email: profileData.Email,

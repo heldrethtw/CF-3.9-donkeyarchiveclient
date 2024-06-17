@@ -21,7 +21,7 @@ const LoginView = ({ setLoggedIn }) => {
         {
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "http://localhost:1234",
+            "Access-Control-Allow-Origin": "*",
           },
         }
       );

@@ -14,7 +14,7 @@ const NavBar = ({ loggedIn, handleLogout }) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "http://localhost:1234",
+            "Access-Control-Allow-Origin": "*",
           },
         }
       );
