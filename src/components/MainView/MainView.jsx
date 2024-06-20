@@ -1,55 +1,33 @@
-import React, { useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
-import NavBar from "../NavBar/NavBar";
-import LoginView from "../LoginView/LoginView";
-import RegistrationView from "../RegistrationView/RegistrationView";
-import ProfileView from "../ProfileView/ProfileView";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Button, Container, Row, Col } from "react-bootstrap";
+import "./MainView.scss";
 
 const MainView = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    setLoggedIn(!!token);
-    console.log("Token in localStorage: ", token);
-    console.log("Logged in state:", !!token);
-  }, []);
-
-  const handleLogout = () => {
-    setLoggedIn(false);
-    localStorage.removeItem("token");
-    window.location.reload();
-  };
+  const navigate = useNavigate();
 
   return (
-    <Router>
-      <NavBar loggedIn={loggedIn} handleLogout={handleLogout} />
-      <Routes>
-        {!loggedIn ? (
-          <>
-            <Route
-              path="/login"
-              element={<LoginView setLoggedIn={setLoggedIn} />}
-            />
-            <Route
-              path="/register"
-              element={<RegistrationView setLoggedIn={setLoggedIn} />}
-            />
-            <Route path="*" element={<Navigate to="/login" />} />
-          </>
-        ) : (
-          <>
-            <Route path="/profile" element={<ProfileView />} />
-            <Route path="*" element={<Navigate to="/profile" />} />
-          </>
-        )}
-      </Routes>
-    </Router>
+    <Container className="main-view">
+      <Row className="justify-content-md-center">
+        <Col md={6} className="text-center">
+          <h1>Welcome to the Donkey Archive</h1>
+          <Button
+            variant="primary"
+            onClick={() => navigate("/login")}
+            className="m-2"
+          >
+            Login
+          </Button>
+          <Button
+            variant="secondary"
+            onClick={() => navigate("/register")}
+            className="m-2"
+          >
+            Register
+          </Button>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

@@ -1,68 +1,41 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { Form, Button, Alert, Container, Row, Col } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import "./RegistrationView.scss";
 
 const RegistrationView = ({ setLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [birth, setBirth] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const data = {
-        Username: username,
-        Password: password,
-        Email: email,
-        Birthday: birth,
-      };
-
-      const response = await fetch(
-        "https://donkey-archive-af41e8314602.herokuapp.com/api/auth/users",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-          body: JSON.stringify(data),
-        }
+      const response = await axios.post(
+        "https://donkey-archive-af41e8314602.herokuapp.com/api/auth/register",
+        { Username: username, Password: password, Email: email },
+        { headers: { "Content-Type": "application/json" } }
       );
-
-      let responseData;
-      const contentType = response.headers.get("content-type");
-
-      if (contentType && contentType.indexOf("application/json") !== -1) {
-        responseData = await response.json();
-      } else {
-        responseData = await response.text();
-      }
-
-      if (response.ok) {
-        localStorage.setItem("token", responseData.token);
+      if (response.status === 200) {
+        localStorage.setItem("token", response.data.token);
         setLoggedIn(true);
         setSuccess("Registration successful! You are now logged in.");
+        setError("");
+        navigate("/profile"); // Assuming you have a ProfileView route
       } else {
-        try {
-          const errorData = await response.json();
-          console.log("Registration Error:", errorData);
-          setError(
-            `Error registering: ${errorData.errors
-              .map((err) => err.msg)
-              .join(", ")}`
-          );
-        } catch (jsonError) {
-          const errorText = await response.text();
-          console.log("Registration Error:", errorText);
-          setError(`Error registering: ${errorText}`);
-        }
+        setError(
+          "Registration failed. Please check your inputs and try again."
+        );
+        setSuccess("");
       }
     } catch (err) {
-      console.log(err);
-      setError("Error registering");
+      console.error("Registration Error:", err);
+      setError("Error registering. Please try again later.");
+      setSuccess("");
     }
   };
 
@@ -70,49 +43,33 @@ const RegistrationView = ({ setLoggedIn }) => {
     <Container className="registration-view">
       <Row className="justify-content-md-center">
         <Col md={6}>
-          <Form className="registration-form" onSubmit={handleRegister}>
-            <Form.Group controlId="formRegistrationUsername">
+          <Form onSubmit={handleRegister}>
+            <Form.Group controlId="formRegisterUsername">
               <Form.Label>Username</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
             </Form.Group>
-
-            <Form.Group controlId="formRegistrationEmail">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group controlId="formRegistrationPassword">
+            <Form.Group controlId="formRegisterPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
-
-            <Form.Group controlId="formRegistrationBirth">
-              <Form.Label>Date of Birth</Form.Label>
+            <Form.Group controlId="formRegisterEmail">
+              <Form.Label>Email</Form.Label>
               <Form.Control
-                type="date"
-                value={birth}
-                onChange={(e) => setBirth(e.target.value)}
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </Form.Group>
-
             {error && <Alert variant="danger">{error}</Alert>}
             {success && <Alert variant="success">{success}</Alert>}
-
             <Button variant="primary" type="submit">
               Register
             </Button>
