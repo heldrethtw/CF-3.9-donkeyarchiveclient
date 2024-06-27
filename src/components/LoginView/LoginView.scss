@@ -5,46 +5,47 @@
   height: 100vh;
   background-color: #f5f5f5;
 
-  h2{
+  h2 {
     margin-bottom: 1rem;
     text-align: center;
   }
 
-  form{
-    display:flex;
+  form {
+    display: flex;
     flex-direction: column;
   }
 
-  div{
+  div {
     margin-bottom: 1rem;
   }
 
-  label{
+  label {
     margin-bottom: 0.5rem;
     font-weight: bold;
   }
 
-  input{
+  input {
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
 
-  .error{
+  .error {
     color: red;
     margin-bottom: 1rem;
   }
 
-  button{
-    background-color: #007bff;
+  button {
+    background-color: #4d647d;
     color: #fff;
     padding: 0.5rem;
     font-size: 1rem;
     cursor: pointer;
     border-radius: 5px;
 
-    &:hover{
+    &:hover {
       background-color: #0056b3;
-  }
+      border: #4d647d;
+    }
   }
 }

@@ -20,40 +20,40 @@
 }
 
 .registration-form input {
-    width: 80%;
-    height: 40px;
-    margin: 10px 0;
-    padding: 0 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  width: 80%;
+  height: 40px;
+  margin: 10px 0;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .registration-form button {
-    width: 80%;
-    height: 40px;
-    margin: 10px 0;
-    padding: 0 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
+  width: 80%;
+  height: 40px;
+  margin: 10px 0;
+  padding: 0 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
 }
 .registration-form button:hover {
-    background-color: #c7b6c7;
+  background-color: #c7b6c7;
 }
 
-.error{
-    color: red;
-    font-size: 12px;
-    margin: 0;
-    padding: 0;     
+.error {
+  color: red;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
 }
 
-.success{
-    color: green;
-    font-size: 12px;
-    margin: 0;
-    padding: 0;     
+.success {
+  color: green;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
 }

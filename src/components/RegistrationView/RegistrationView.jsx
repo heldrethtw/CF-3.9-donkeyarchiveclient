@@ -8,24 +8,31 @@ const RegistrationView = ({ setLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [birthday, setBirthday] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
+
     try {
       const response = await axios.post(
-        "https://donkey-archive-af41e8314602.herokuapp.com/api/auth/register",
-        { Username: username, Password: password, Email: email },
+        "https://donkey-archive-af41e8314602.herokuapp.com/api/auth/users",
+        {
+          Username: username,
+          Password: password,
+          Email: email,
+          Birthday: birthday,
+        },
         { headers: { "Content-Type": "application/json" } }
       );
-      if (response.status === 200) {
+      if (response.status === 201) {
         localStorage.setItem("token", response.data.token);
         setLoggedIn(true);
         setSuccess("Registration successful! You are now logged in.");
         setError("");
-        navigate("/profile"); // Assuming you have a ProfileView route
+        navigate("/profile");
       } else {
         setError(
           "Registration failed. Please check your inputs and try again."
@@ -66,6 +73,14 @@ const RegistrationView = ({ setLoggedIn }) => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId="formRegisterBirthday">
+              <Form.Label>Birthday</Form.Label>
+              <Form.Control
+                type="date"
+                value={birthday}
+                onChange={(e) => setBirthday(e.target.value)}
               />
             </Form.Group>
             {error && <Alert variant="danger">{error}</Alert>}

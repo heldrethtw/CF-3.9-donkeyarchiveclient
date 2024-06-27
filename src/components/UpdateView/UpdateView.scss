@@ -1,0 +1,37 @@
+.update-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.form {
+  display: flex;
+  flex-direction: row; /* Change flex-direction to row */
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ccc;
+  padding: 20px;
+  margin-right: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ccc;
+  padding: 20px;
+  margin-right: 20px; /* Add this line to move the border to the right */
+}
+
+.btn {
+  background-color: #9e4b94;
+  border-color: #7c19a0;
+
+  &:hover {
+    background-color: #529562;
+    border-color: #4e739a;
+  }
+}

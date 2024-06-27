@@ -1,9 +1,19 @@
 import React from "react";
 import { Navbar, Nav, Button } from "react-bootstrap";
-//import axiosInstance from "../../axiosInstance";
 import { LinkContainer } from "react-router-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../../../UserContext";
+import "./NavBar.scss";
 
-const NavBar = ({ loggedIn, handleLogout }) => {
+const NavBar = ({ isProfileView }) => {
+  const navigate = useNavigate();
+  const { user, logout } = useUser();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
+
   const handleLogin = async () => {
     try {
       const response = await fetch(
@@ -24,19 +34,29 @@ const NavBar = ({ loggedIn, handleLogout }) => {
       console.error("Error logging in", err);
     }
   };
+
   return (
     <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="main-view">Main</Navbar.Brand>
+      <Navbar.Brand href="main-view">The Donkey Archive</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
-          {loggedIn ? (
+          {user && user.token ? (
             <>
-              <LinkContainer to="/profile">
-                <Button variant="outline-info" className="mr-2">
-                  Profile
-                </Button>
-              </LinkContainer>
+              {!isProfileView && (
+                <LinkContainer to="/profile">
+                  <Button variant="outline-info" className="mr-2">
+                    Profile
+                  </Button>
+                </LinkContainer>
+              )}
+              <Button
+                variant="outline-info"
+                className="mr-2"
+                onClick={() => navigate("/update-profile")}
+              >
+                Update Profile
+              </Button>
               <Button variant="outline-danger" onClick={handleLogout}>
                 Logout
               </Button>

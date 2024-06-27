@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Form, Button, Alert, Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../../UserContext"; // Ensure you have the user context
 import "./LoginView.scss";
 
 const LoginView = ({ setLoggedIn }) => {
@@ -10,6 +11,7 @@ const LoginView = ({ setLoggedIn }) => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const navigate = useNavigate();
+  const { setUser } = useUser(); // Access setUser from user context
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -20,7 +22,9 @@ const LoginView = ({ setLoggedIn }) => {
         { headers: { "Content-Type": "application/json" } }
       );
       if (response.status === 200) {
-        localStorage.setItem("token", response.data.token);
+        const { token, Username } = response.data; // Adjust destructuring to match your response
+        localStorage.setItem("token", token);
+        setUser({ username: Username, token });
         setLoggedIn(true);
         setSuccess("Login successful! You are now logged in.");
         setError("");
