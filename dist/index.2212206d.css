@@ -13341,47 +13341,67 @@ textarea.form-control-lg {
 
 .main-view {
   text-align: center;
+  background-color: #050606;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   padding: 2rem;
+  display: flex;
 }
 
-.main-view h1 {
-  color: #343a40;
+.main-view .glassmorphic-card {
+  -webkit-backdrop-filter: blur(10px);
+  background: #ffffff1a;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 8px #0000001a;
+}
+
+.main-view .glassmorphic-card h1 {
+  color: #da401a;
   margin-bottom: 2rem;
-  font-size: 2.5rem;
+  font-size: 3rem;
 }
 
-.main-view .btn {
+.main-view .glassmorphic-card .btn {
   margin: .5rem;
   padding: .75rem 1.5rem;
   font-size: 1.25rem;
 }
 
-.main-view .btn.btn-primary {
-  background-color: #7e9cbb;
-  border-color: #9caec1;
+.main-view .glassmorphic-card .btn.btn-primary {
+  background-color: #45779a;
+  border-color: #dddee0;
 }
 
-.main-view .btn.btn-primary:hover {
-  background-color: #4988cc;
-  border-color: #004085;
+.main-view .glassmorphic-card .btn.btn-primary:hover {
+  background-color: #e2c521;
+  border-color: #7c7246;
 }
 
-.main-view .btn.btn-secondary {
-  background-color: #6c757d;
-  border-color: #6c757d;
+.main-view .glassmorphic-card .btn.btn-secondary {
+  background-color: #cbcd8c;
+  border-color: #cabacb;
 }
 
-.main-view .btn.btn-secondary:hover {
-  background-color: #50687a;
-  border-color: #46617c;
+.main-view .glassmorphic-card .btn.btn-secondary:hover {
+  background-color: #c05c05;
+  border-color: #d75708;
 }
 
 .login-view {
-  background-color: #f5f5f5;
+  background-color: #bb6f6f;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
   display: flex;
+}
+
+.login-view h1 {
+  color: #da401a;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
 }
 
 .login-view h2 {
@@ -13417,19 +13437,27 @@ textarea.form-control-lg {
 .login-view button {
   color: #fff;
   cursor: pointer;
-  background-color: #4d647d;
+  background-color: #3e5977;
   border-radius: 5px;
   padding: .5rem;
   font-size: 1rem;
 }
 
 .login-view button:hover {
-  background-color: #0056b3;
-  border: #4d647d;
+  background-color: #58a97c;
+  border: #3192b9;
+}
+
+span {
+  color: #da401a;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-family: Gill Sans, Gill Sans MT, Calibri, Trebuchet MS, sans-serif;
+  font-size: 5rem;
 }
 
 .registration-view {
-  background-color: #f5f5f5;
+  background-color: #7b7f0b;
   justify-content: center;
   align-items: center;
   width: 100vw;
@@ -13450,7 +13478,7 @@ textarea.form-control-lg {
 }
 
 .registration-form input {
-  border: 1px solid #ccc;
+  border: 1px solid #c89393;
   border-radius: 5px;
   width: 80%;
   height: 40px;
@@ -13461,7 +13489,7 @@ textarea.form-control-lg {
 .registration-form button {
   cursor: pointer;
   color: #fff;
-  background-color: #007bff;
+  background-color: #546578;
   border: none;
   border-radius: 5px;
   width: 80%;
@@ -13489,8 +13517,25 @@ textarea.form-control-lg {
   font-size: 12px;
 }
 
+.RegSpan {
+  color: #934532;
+  font-family: Gill Sans, Gill Sans MT, Calibri, Trebuchet MS, sans-serif;
+  font-size: 3rem;
+}
+
+button.btn.btn-primary {
+  background-color: #748d9f;
+  border-color: #dddee0;
+  margin-top: 15px;
+}
+
+button.btn.btn-primary:hover {
+  background-color: #e2c521;
+  border-color: #7c7246;
+}
+
 .profile-view {
-  background-color: #f5f5f5;
+  background-color: #973e3e;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -13521,47 +13566,63 @@ textarea.form-control-lg {
   margin-top: 10px;
 }
 
+body {
+  background: #f4f4f9;
+  font-family: "Press Start 2P", cursive;
+}
+
 .navbar {
-  background-color: #f8f9fa;
-  justify-content: flex-end;
-  padding: 10px;
-  display: flex;
-}
-
-.navbar button {
-  cursor: pointer;
-  border: none;
-  border-radius: 4px;
-  margin: 0 10px;
+  background-color: #e0e0e0;
+  border-radius: 12px;
   padding: 10px 20px;
-  font-size: 16px;
+  box-shadow: 8px 8px 16px #0003, -8px -8px 16px #fff;
 }
 
-.navbar button.login {
-  color: #fff;
-  background-color: #007bff;
+.navbar .navbar-brand {
+  color: #007bff;
+  text-shadow: 2px 2px 4px #0003;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-.navbar button.login:hover {
-  background-color: #0056b3;
+.navbar .navbar-brand:hover {
+  color: #0062cc;
 }
 
-.navbar button.logout {
-  color: #b1a9a9;
-  background-color: #5b88b7;
+.navbar .navbar-toggler {
+  border: none;
+  box-shadow: 4px 4px 8px #0003, -4px -4px 8px #fff;
 }
 
-.navbar button.logout:hover {
-  background-color: #23c8a1;
+.navbar .navbar-toggler:focus {
+  outline: none;
+  box-shadow: 4px 4px 8px #0003, -4px -4px 8px #fff;
 }
 
-.navbar button.register {
-  color: #fff;
-  background-color: #b7d370;
+.navbar .navbar-collapse {
+  justify-content: flex-end;
 }
 
-.navbar button.register:hover {
-  background-color: #343a40;
+.navbar .navbar-collapse .nav-link {
+  color: #007bff;
+  text-shadow: 2px 2px 4px #0003;
+}
+
+.navbar .navbar-collapse .nav-link:hover {
+  color: #0062cc;
+}
+
+.navbar .navbar-collapse .btn-outline-info, .navbar .navbar-collapse .btn-outline-danger, .navbar .navbar-collapse .btn-outline-success {
+  border-radius: 20px;
+  box-shadow: 4px 4px 8px #0003, -4px -4px 8px #fff;
+}
+
+.navbar .navbar-collapse .btn-outline-info:hover, .navbar .navbar-collapse .btn-outline-danger:hover, .navbar .navbar-collapse .btn-outline-success:hover {
+  box-shadow: inset 4px 4px 8px #0003, inset -4px -4px 8px #fff;
+}
+
+.navbar .navbar-collapse .mr-2 {
+  margin-right: .5rem;
 }
 
 .update-view {
@@ -13583,12 +13644,12 @@ textarea.form-control-lg {
 }
 
 .btn {
-  background-color: #9e4b94;
-  border-color: #7c19a0;
+  background-color: #92668d;
+  border-color: #917e98;
 }
 
 .btn:hover {
-  background-color: #529562;
-  border-color: #4e739a;
+  background-color: #709b7a;
+  border-color: #657280;
 }
 /*# sourceMappingURL=index.2212206d.css.map */

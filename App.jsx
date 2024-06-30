@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -10,10 +10,19 @@ import LoginView from "./src/components/LoginView/LoginView";
 import RegistrationView from "./src/components/RegistrationView/RegistrationView";
 import ProfileView from "./src/components/ProfileView/ProfileView";
 import UpdateView from "./src/components/UpdateView/UpdateView";
-import FavoriteMovies from "./src/components/FavoriteMovies/FavoriteMovies";
+import DirectorView from "./src/components/DirectorView/DirectorView";
+import GenreView from "./src/components/GenreView/GenreView";
+import MovieView from "./src/components/MovieView/MovieView";
+import { useUser } from "./UserContext";
 
 const App = () => {
-  const [loggedIn, setLoggedIn] = React.useState(false);
+  const { user, setUser } = useUser();
+  const [loggedIn, setLoggedIn] = useState(!!user.token);
+
+  useEffect(() => {
+    setLoggedIn(!!user.token);
+  }, [user]);
+
   return (
     <Router>
       <Routes>
@@ -26,9 +35,26 @@ const App = () => {
           path="/register"
           element={<RegistrationView setLoggedIn={setLoggedIn} />}
         />
-        <Route path="/profile" element={<ProfileView />} />
-        <Route path="/update-profile" element={<UpdateView />} />
-        <Route path="/favorites" element={<FavoriteMovies />} />
+        <Route
+          path="/profile"
+          element={loggedIn ? <ProfileView /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/update-profile"
+          element={loggedIn ? <UpdateView /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/directors"
+          element={loggedIn ? <DirectorView /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/genres"
+          element={loggedIn ? <GenreView /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/movies"
+          element={loggedIn ? <MovieView /> : <Navigate to="/login" />}
+        />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>

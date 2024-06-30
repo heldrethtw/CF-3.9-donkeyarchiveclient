@@ -110,7 +110,7 @@ const ProfileView = () => {
       <Container className="profile-view">
         <Row className="justify-content-md-center">
           <Col md={6} className="text-center">
-            <h1>Your Profile</h1>
+            <h1>Profile</h1>
             <h2>{user.username}</h2>
             <p>{user.email}</p>
           </Col>
