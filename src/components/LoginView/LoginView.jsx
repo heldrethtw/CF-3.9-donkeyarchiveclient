@@ -41,9 +41,9 @@ const LoginView = ({ setLoggedIn }) => {
   };
 
   return (
-    <div>
+    <div className="login-view">
       <span>The Donkey Archive Log In</span>
-      <Container className="login-view">
+      <Container>
         <Row className="justify-content-md-center">
           <Col md={6}>
             <Form onSubmit={handleLogin}>

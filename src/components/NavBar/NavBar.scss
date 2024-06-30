@@ -1,43 +1,79 @@
+$navbar-bg-color: #e0e0e0; /* Light grey for neumorphic effect */
+$navbar-link-color: #007bff;
+$navbar-link-hover-color: darken($navbar-link-color, 10%);
+$navbar-button-outline-info-color: #17a2b8;
+$navbar-button-outline-info-hover-color: darken(
+  $navbar-button-outline-info-color,
+  10%
+);
+$navbar-button-outline-danger-color: #dc3545;
+$navbar-button-outline-danger-hover-color: darken(
+  $navbar-button-outline-danger-color,
+  10%
+);
+$navbar-button-outline-success-color: #28a745;
+$navbar-button-outline-success-hover-color: darken(
+  $navbar-button-outline-success-color,
+  10%
+);
+$shadow-color: rgba(0, 0, 0, 0.2);
+
+body {
+  background: #f4f4f9;
+  font-family: "Press Start 2P", cursive;
+}
+
 .navbar {
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px;
-  background-color: #5c9cdd;
+  background-color: $navbar-bg-color;
+  box-shadow: 8px 8px 16px $shadow-color, -8px -8px 16px white;
+  border-radius: 12px;
+  padding: 10px 20px;
 
-  button {
-    margin: 0 10px;
-    padding: 10px 20px;
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: $navbar-link-color;
+    text-shadow: 2px 2px 4px $shadow-color;
+
+    &:hover {
+      color: $navbar-link-hover-color;
+    }
+  }
+
+  .navbar-toggler {
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
+    box-shadow: 4px 4px 8px $shadow-color, -4px -4px 8px white;
+    &:focus {
+      outline: none;
+      box-shadow: 4px 4px 8px $shadow-color, -4px -4px 8px white;
+    }
+  }
 
-    &.login {
-      background-color: #a4b2aa;
-      color: #55774a;
+  .navbar-collapse {
+    justify-content: flex-end;
+
+    .nav-link {
+      color: $navbar-link-color;
+      text-shadow: 2px 2px 4px $shadow-color;
 
       &:hover {
-        background-color: #79aade;
+        color: $navbar-link-hover-color;
       }
     }
 
-    &.logout {
-      background-color: #5b88b7;
-      color: #b1a9a9;
+    .btn-outline-info,
+    .btn-outline-danger,
+    .btn-outline-success {
+      border-radius: 20px;
+      box-shadow: 4px 4px 8px $shadow-color, -4px -4px 8px white;
 
       &:hover {
-        background-color: #23c8a1;
+        box-shadow: inset 4px 4px 8px $shadow-color, inset -4px -4px 8px white;
       }
     }
 
-    &.register {
-      background-color: #b7d370;
-
-      color: #fff;
-
-      &:hover {
-        background-color: #343a40;
-      }
+    .mr-2 {
+      margin-right: 0.5rem;
     }
   }
 }
