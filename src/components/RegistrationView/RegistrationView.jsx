@@ -47,51 +47,54 @@ const RegistrationView = ({ setLoggedIn }) => {
   };
 
   return (
-    <Container className="registration-view">
-      <Row className="justify-content-md-center">
-        <Col md={6}>
-          <Form onSubmit={handleRegister}>
-            <Form.Group controlId="formRegisterUsername">
-              <Form.Label>Username</Form.Label>
-              <Form.Control
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group controlId="formRegisterPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group controlId="formRegisterEmail">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group controlId="formRegisterBirthday">
-              <Form.Label>Birthday</Form.Label>
-              <Form.Control
-                type="date"
-                value={birthday}
-                onChange={(e) => setBirthday(e.target.value)}
-              />
-            </Form.Group>
-            {error && <Alert variant="danger">{error}</Alert>}
-            {success && <Alert variant="success">{success}</Alert>}
-            <Button variant="primary" type="submit">
-              Register
-            </Button>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
+    <div>
+      <span className="RegSpan">The Donkey Archive User Registration</span>
+      <Container className="registration-view">
+        <Row className="justify-content-md-center">
+          <Col md={6}>
+            <Form onSubmit={handleRegister}>
+              <Form.Group controlId="formRegisterUsername">
+                <Form.Label>Username</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group controlId="formRegisterPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group controlId="formRegisterEmail">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group controlId="formRegisterBirthday">
+                <Form.Label>Birthday</Form.Label>
+                <Form.Control
+                  type="date"
+                  value={birthday}
+                  onChange={(e) => setBirthday(e.target.value)}
+                />
+              </Form.Group>
+              {error && <Alert variant="danger">{error}</Alert>}
+              {success && <Alert variant="success">{success}</Alert>}
+              <Button variant="primary" type="submit">
+                Register
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
 

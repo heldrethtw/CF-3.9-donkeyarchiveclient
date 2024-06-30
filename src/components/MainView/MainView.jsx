@@ -25,6 +25,35 @@ const MainView = () => {
           >
             Register
           </Button>
+          <Button
+            variant="primary"
+            onClick={() => navigate("/movies")}
+            className="m-2"
+          >
+            Search Movies
+          </Button>
+          <Button
+            variant="secondary"
+            onClick={() => navigate("/directors")}
+            className="m-2"
+          >
+            Search Directors
+          </Button>
+          <Button
+            variant="primary"
+            onClick={() => navigate("/genres")}
+            className="m-2"
+          >
+            Search Genres
+          </Button>
+
+          <Button
+            variant="secondary"
+            onClick={() => navigate("favorite-movies")}
+            className="m-2"
+          >
+            Favorite Movies
+          </Button>
         </Col>
       </Row>
     </Container>

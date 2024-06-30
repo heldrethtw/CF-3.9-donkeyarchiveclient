@@ -1,11 +1,12 @@
 .main-view {
   padding: 2rem;
   text-align: center;
+  background-color: rgb(5, 6, 6);
 
   h1 {
     margin-bottom: 2rem;
-    font-size: 2.5rem;
-    color: #343a40;
+    font-size: 4rem;
+    color: #da401a;
   }
 
   .btn {
@@ -14,22 +15,22 @@
     padding: 0.75rem 1.5rem;
 
     &.btn-primary {
-      background-color: #7e9cbb;
-      border-color: #9caec1;
+      background-color: #45779a;
+      border-color: #dddee0;
 
       &:hover {
-        background-color: #4988cc;
-        border-color: #004085;
+        background-color: #e2c521;
+        border-color: #7c7246;
       }
     }
 
     &.btn-secondary {
-      background-color: #6c757d;
-      border-color: #6c757d;
+      background-color: #cbcd8c;
+      border-color: #cabacb;
 
       &:hover {
-        background-color: #50687a;
-        border-color: #46617c;
+        background-color: #c05c05;
+        border-color: #d75708;
       }
     }
   }

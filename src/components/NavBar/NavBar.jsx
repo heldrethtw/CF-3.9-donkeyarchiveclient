@@ -14,30 +14,9 @@ const NavBar = ({ isProfileView }) => {
     navigate("/login");
   };
 
-  const handleLogin = async () => {
-    try {
-      const response = await fetch(
-        "https://donkey-archive-af41e8314602.herokuapp.com/api/auth/login",
-        {
-          username: "user",
-          password: "password",
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
-      );
-      localStorage.setItem("token", response.data.token);
-      window.location.reload();
-    } catch (err) {
-      console.error("Error logging in", err);
-    }
-  };
-
   return (
     <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="main-view">The Donkey Archive</Navbar.Brand>
+      <Navbar.Brand href="/">The Donkey Archive</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
@@ -50,20 +29,36 @@ const NavBar = ({ isProfileView }) => {
                   </Button>
                 </LinkContainer>
               )}
-              <Button
-                variant="outline-info"
-                className="mr-2"
-                onClick={() => navigate("/update-profile")}
-              >
-                Update Profile
-              </Button>
+              <LinkContainer to="/update-profile">
+                <Button variant="outline-info" className="mr-2">
+                  Update Profile
+                </Button>
+              </LinkContainer>
+              <LinkContainer to="/directors">
+                <Button variant="outline-info" className="mr-2">
+                  Directors
+                </Button>
+              </LinkContainer>
+              <LinkContainer to="/genres">
+                <Button variant="outline-info" className="mr-2">
+                  Genres
+                </Button>
+              </LinkContainer>
+              <LinkContainer to="/movies">
+                <Button variant="outline-info" className="mr-2">
+                  Movies
+                </Button>
+              </LinkContainer>
               <Button variant="outline-danger" onClick={handleLogout}>
                 Logout
               </Button>
             </>
           ) : (
             <>
-              <Button variant="outline-success" onClick={handleLogin}>
+              <Button
+                variant="outline-success"
+                onClick={() => navigate("/login")}
+              >
                 Login
               </Button>
               <LinkContainer to="/register">
