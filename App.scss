@@ -1,0 +1,46 @@
+:root {
+  --bg-color: #f0f0f0;
+  --text-color: #333;
+  --primary-color: #da401a;
+  --secondary-color: #a6b42c;
+  --success-color: #4caf50;
+  --danger-color: #f44336;
+  --border-color: #ccc;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #1f1f1f;
+    --text-color: #f0f0f0;
+    --primary-color: #ff7f50;
+    --secondary-color: #8b8b8b;
+    --success-color: #4caf50;
+    --danger-color: #f44336;
+    --border-color: #555;
+  }
+}
+
+.app {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.logout-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--danger-color);
+  color: var(--bg-color);
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #c41c10;
+  }
+}
