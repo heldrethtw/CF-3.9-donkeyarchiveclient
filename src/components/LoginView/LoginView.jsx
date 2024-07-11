@@ -28,7 +28,7 @@ const LoginView = ({ setLoggedIn }) => {
         setLoggedIn(true);
         setSuccess("Login successful! You are now logged in.");
         setError("");
-        navigate("/profile"); // Navigate to ProfileView
+        navigate("/main-view");
       } else {
         setError("Login failed. Please check your credentials and try again.");
         setSuccess("");
@@ -42,7 +42,7 @@ const LoginView = ({ setLoggedIn }) => {
 
   return (
     <div className="login-view">
-      <span>The Donkey Archive Log In</span>
+      <span>THE DONKEY ARCHIVE LOG IN</span>
       <Container>
         <Row className="justify-content-md-center">
           <Col md={6}>
@@ -66,7 +66,7 @@ const LoginView = ({ setLoggedIn }) => {
               {error && <Alert variant="danger">{error}</Alert>}
               {success && <Alert variant="success">{success}</Alert>}
               <Button variant="primary" type="submit">
-                Login
+                LOGIN
               </Button>
             </Form>
           </Col>

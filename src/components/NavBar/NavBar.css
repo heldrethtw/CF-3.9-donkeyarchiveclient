@@ -1,0 +1,68 @@
+/* NavBar.scss */
+.navbar {
+  background-color: #f8f9fa;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.navbar .navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #007bff;
+}
+.navbar .navbar-brand:hover {
+  color: #0062cc;
+}
+.navbar .navbar-toggler {
+  border: none;
+}
+.navbar .navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+.navbar .navbar-collapse {
+  justify-content: flex-end;
+}
+.navbar .navbar-collapse .nav-link {
+  color: #007bff;
+}
+.navbar .navbar-collapse .nav-link:hover {
+  color: #0062cc;
+}
+.navbar .navbar-collapse .btn-outline-info {
+  color: #17a2b8;
+  border-color: #17a2b8;
+}
+.navbar .navbar-collapse .btn-outline-info:hover {
+  color: #117a8b;
+  border-color: #117a8b;
+}
+.navbar .navbar-collapse .btn-outline-danger {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+.navbar .navbar-collapse .btn-outline-danger:hover {
+  color: #bd2130;
+  border-color: #bd2130;
+}
+.navbar .navbar-collapse .btn-outline-success {
+  color: #28a745;
+  border-color: #28a745;
+}
+.navbar .navbar-collapse .btn-outline-success:hover {
+  color: #1e7e34;
+  border-color: #1e7e34;
+}
+.navbar .navbar-collapse .mr-2 {
+  margin-right: 0.5rem;
+}
+
+@media (max-width: 576px) {
+  .navbar .navbar-brand {
+    font-size: 1.25rem;
+  }
+  .navbar .navbar-collapse .btn-outline-info,
+  .navbar .navbar-collapse .btn-outline-danger,
+  .navbar .navbar-collapse .btn-outline-success {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}/*# sourceMappingURL=NavBar.css.map */

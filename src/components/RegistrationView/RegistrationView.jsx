@@ -32,7 +32,7 @@ const RegistrationView = ({ setLoggedIn }) => {
         setLoggedIn(true);
         setSuccess("Registration successful! You are now logged in.");
         setError("");
-        navigate("/profile");
+        navigate("/main-view");
       } else {
         setError(
           "Registration failed. Please check your inputs and try again."

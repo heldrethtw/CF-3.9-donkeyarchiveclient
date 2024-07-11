@@ -1,24 +1,28 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { Container, Row, Col, Form, Button, ListGroup } from "react-bootstrap";
+import { searchMoviesByDirector } from "../../services/API";
 import "./DirectorView.scss";
 
-const DirectorView = ({ director }) => {
+const DirectorView = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState("");
+  const [director, setDirector] = useState(null);
+  const [directorMovies, setDirectorMovies] = useState([]);
 
   const handleSearch = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.get(
-        `https://donkey-archive-af41e8314602.herokuapp.com/api/movies/directors/${searchTerm}`
-      );
-      setMovies(response.data);
+      const response = await searchMoviesByDirector(searchTerm);
+      setMovies(response.data.movies);
+      setDirector(response.data.director);
+      setError("");
     } catch (err) {
       console.error("Search Error:", err);
       setError("Error searching for movies. Please try again later.");
+      setMovies([]);
+      setDirector(null);
     }
   };
 
@@ -29,23 +33,48 @@ const DirectorView = ({ director }) => {
           <h1>Search for a Director</h1>
           <Form onSubmit={handleSearch}>
             <Form.Group controlId="formDirectorSearch">
-              <Form.Label>Director</Form.Label>
+              <Form.Label>Director Name</Form.Label>
               <Form.Control
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Enter director's name"
               />
             </Form.Group>
             <Button variant="primary" type="submit">
               Search
             </Button>
           </Form>
-          <ListGroup>
-            {movies.map((movie) => (
-              <ListGroup.Item key={movie._id}>{movie.Title}</ListGroup.Item>
-            ))}
-          </ListGroup>
-          {error && <p>{error}</p>}
+
+          {director && (
+            <div className="director-info mt-4">
+              <h2>{director.Name}</h2>
+              <p>
+                <strong>Bio:</strong> {director.Bio}
+              </p>
+              <p>
+                <strong>Birth:</strong> {director.Birth}
+              </p>
+              {director.Death && (
+                <p>
+                  <strong>Death:</strong> {director.Death}
+                </p>
+              )}
+            </div>
+          )}
+
+          {movies.length > 0 && (
+            <div className="mt-4">
+              <h3>Movies by this Director:</h3>
+              <ListGroup>
+                {movies.map((movie) => (
+                  <ListGroup.Item key={movie._id}>{movie.Title}</ListGroup.Item>
+                ))}
+              </ListGroup>
+            </div>
+          )}
+
+          {error && <p className="text-danger mt-3">{error}</p>}
         </Col>
       </Row>
     </Container>

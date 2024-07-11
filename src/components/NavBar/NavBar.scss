@@ -1,4 +1,6 @@
-$navbar-bg-color: #e0e0e0; /* Light grey for neumorphic effect */
+/* NavBar.scss */
+
+$navbar-bg-color: #f8f9fa;
 $navbar-link-color: #007bff;
 $navbar-link-hover-color: darken($navbar-link-color, 10%);
 $navbar-button-outline-info-color: #17a2b8;
@@ -16,24 +18,16 @@ $navbar-button-outline-success-hover-color: darken(
   $navbar-button-outline-success-color,
   10%
 );
-$shadow-color: rgba(0, 0, 0, 0.2);
-
-body {
-  background: #f4f4f9;
-  font-family: "Press Start 2P", cursive;
-}
+$spacing-unit: 0.5rem;
 
 .navbar {
   background-color: $navbar-bg-color;
-  box-shadow: 8px 8px 16px $shadow-color, -8px -8px 16px white;
-  border-radius: 12px;
-  padding: 10px 20px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 
   .navbar-brand {
     font-weight: bold;
     font-size: 1.5rem;
     color: $navbar-link-color;
-    text-shadow: 2px 2px 4px $shadow-color;
 
     &:hover {
       color: $navbar-link-hover-color;
@@ -42,10 +36,10 @@ body {
 
   .navbar-toggler {
     border: none;
-    box-shadow: 4px 4px 8px $shadow-color, -4px -4px 8px white;
+
     &:focus {
       outline: none;
-      box-shadow: 4px 4px 8px $shadow-color, -4px -4px 8px white;
+      box-shadow: none;
     }
   }
 
@@ -54,26 +48,61 @@ body {
 
     .nav-link {
       color: $navbar-link-color;
-      text-shadow: 2px 2px 4px $shadow-color;
 
       &:hover {
         color: $navbar-link-hover-color;
       }
     }
 
-    .btn-outline-info,
-    .btn-outline-danger,
-    .btn-outline-success {
-      border-radius: 20px;
-      box-shadow: 4px 4px 8px $shadow-color, -4px -4px 8px white;
+    .btn-outline-info {
+      color: $navbar-button-outline-info-color;
+      border-color: $navbar-button-outline-info-color;
 
       &:hover {
-        box-shadow: inset 4px 4px 8px $shadow-color, inset -4px -4px 8px white;
+        color: $navbar-button-outline-info-hover-color;
+        border-color: $navbar-button-outline-info-hover-color;
+      }
+    }
+
+    .btn-outline-danger {
+      color: $navbar-button-outline-danger-color;
+      border-color: $navbar-button-outline-danger-color;
+
+      &:hover {
+        color: $navbar-button-outline-danger-hover-color;
+        border-color: $navbar-button-outline-danger-hover-color;
+      }
+    }
+
+    .btn-outline-success {
+      color: $navbar-button-outline-success-color;
+      border-color: $navbar-button-outline-success-color;
+
+      &:hover {
+        color: $navbar-button-outline-success-hover-color;
+        border-color: $navbar-button-outline-success-hover-color;
       }
     }
 
     .mr-2 {
-      margin-right: 0.5rem;
+      margin-right: $spacing-unit;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar {
+    .navbar-brand {
+      font-size: 1.25rem;
+    }
+
+    .navbar-collapse {
+      .btn-outline-info,
+      .btn-outline-danger,
+      .btn-outline-success {
+        width: 100%;
+        margin-bottom: $spacing-unit;
+      }
     }
   }
 }

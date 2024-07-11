@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Form, Button, Alert, Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { getUserProfile, updateUserProfile } from "../../services/API";
 import "./UpdateView.scss";
 
 const UpdateView = () => {
@@ -18,12 +18,7 @@ const UpdateView = () => {
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
-        const token = localStorage.getItem("token");
-        const response = await axios.get("/api/auth/user", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await getUserProfile();
         setProfileData(response.data);
       } catch (error) {
         console.error("Error fetching profile data:", error);
@@ -37,22 +32,12 @@ const UpdateView = () => {
   const handleUpdateProfile = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem("token");
-      const response = await axios.put(
-        `https://donkey-archive-af41e8314602.herokuapp.com/api/auth/users/${profileData.Username}`,
-        {
-          Username: profileData.Username,
-          Email: profileData.Email,
-          Birthday: profileData.Birthday,
-          Password: password,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await updateUserProfile(profileData.Username, {
+        Username: profileData.Username,
+        Email: profileData.Email,
+        Birthday: profileData.Birthday,
+        Password: password,
+      });
 
       if (response.status === 200) {
         setSuccess("Profile updated successfully.");
@@ -74,6 +59,7 @@ const UpdateView = () => {
     <Container className="update-view">
       <Row className="justify-content-md-center">
         <Col md={6}>
+          <h1>Update Profile</h1>
           <Form className="update-form" onSubmit={handleUpdateProfile}>
             <Form.Group controlId="formUpdateUsername">
               <Form.Label>Username</Form.Label>

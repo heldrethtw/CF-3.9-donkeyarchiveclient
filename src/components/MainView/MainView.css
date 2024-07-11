@@ -1,0 +1,43 @@
+.main-view {
+  padding: 2rem;
+  text-align: center;
+  background-color: #0c0e0e; /* Use a solid background color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.main-view .glassmorphic-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.main-view .glassmorphic-card h1 {
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  color: #da401a;
+}
+.main-view .glassmorphic-card .btn {
+  margin: 0.5rem;
+  font-size: 1.25rem;
+  padding: 0.75rem 1.5rem;
+}
+.main-view .glassmorphic-card .btn.btn-primary {
+  background-color: #45779a;
+  border-color: #dddee0;
+}
+.main-view .glassmorphic-card .btn.btn-primary:hover {
+  background-color: #e2c521;
+  border-color: #7c7246;
+}
+.main-view .glassmorphic-card .btn.btn-secondary {
+  background-color: #cbcd8c;
+  border-color: #cabacb;
+}
+.main-view .glassmorphic-card .btn.btn-secondary:hover {
+  background-color: #c05c05;
+  border-color: #d75708;
+}/*# sourceMappingURL=MainView.css.map */

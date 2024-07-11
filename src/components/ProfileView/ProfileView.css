@@ -1,0 +1,31 @@
+.profile-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #973e3e;
+}
+
+.profile-view h1 {
+  margin-bottom: 20px;
+}
+
+.profile-view .form-control {
+  margin-bottom: 15px;
+}
+
+.profile-view .btn-primary {
+  margin-top: 10px;
+  color: aliceblue;
+}
+
+.profile-view .btn-primary:hover {
+  background-color: #529562;
+  border-color: #4e739a;
+}
+
+.profile-view .btn-danger {
+  margin-top: 10px;
+  color: aliceblue;
+}/*# sourceMappingURL=ProfileView.css.map */

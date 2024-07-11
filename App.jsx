@@ -14,9 +14,11 @@ import DirectorView from "./src/components/DirectorView/DirectorView";
 import GenreView from "./src/components/GenreView/GenreView";
 import MovieView from "./src/components/MovieView/MovieView";
 import { useUser } from "./UserContext";
+import LightModeDarkMode from "./src/services/LightModeDarkMode";
+import "./App.scss";
 
 const App = () => {
-  const { user, setUser } = useUser();
+  const { user, logout } = useUser();
   const [loggedIn, setLoggedIn] = useState(!!user.token);
 
   useEffect(() => {
@@ -24,40 +26,49 @@ const App = () => {
   }, [user]);
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<MainView />} />
-        <Route
-          path="/login"
-          element={<LoginView setLoggedIn={setLoggedIn} />}
-        />
-        <Route
-          path="/register"
-          element={<RegistrationView setLoggedIn={setLoggedIn} />}
-        />
-        <Route
-          path="/profile"
-          element={loggedIn ? <ProfileView /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/update-profile"
-          element={loggedIn ? <UpdateView /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/directors"
-          element={loggedIn ? <DirectorView /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/genres"
-          element={loggedIn ? <GenreView /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/movies"
-          element={loggedIn ? <MovieView /> : <Navigate to="/login" />}
-        />
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </Router>
+    <LightModeDarkMode>
+      <Router>
+        <div className="app">
+          <button onClick={logout} className="logout-btn">Logout</button>
+          <Routes>
+            <Route path="/" element={<MainView />} />
+            <Route
+              path="/login"
+              element={<LoginView setLoggedIn={setLoggedIn} />}
+            />
+            <Route
+              path="/register"
+              element={<RegistrationView setLoggedIn={setLoggedIn} />}
+            />
+            <Route
+              path="/profile"
+              element={loggedIn ? <ProfileView /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/update-profile"
+              element={loggedIn ? <UpdateView /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/directors"
+              element={loggedIn ? <DirectorView /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/genres"
+              element={loggedIn ? <GenreView /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/movies"
+              element={loggedIn ? <MovieView /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/favorites"
+              element={loggedIn ? <MovieView /> : <Navigate to="/login" />}
+            />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </div>
+      </Router>
+    </LightModeDarkMode>
   );
 };
 

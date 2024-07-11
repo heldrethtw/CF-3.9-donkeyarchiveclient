@@ -10,10 +10,10 @@ import {
   Spinner,
   Button,
 } from "react-bootstrap";
-import axios from "axios";
 import "./ProfileView.scss";
 import NavBar from "../NavBar/NavBar";
 import { useUser } from "../../../UserContext";
+import { getUserProfile, updateUserProfile } from "../../services/API";
 
 const ProfileView = () => {
   const navigate = useNavigate();
@@ -38,15 +38,7 @@ const ProfileView = () => {
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
-        const token = localStorage.getItem("token");
-        const response = await axios.get(
-          `https://donkey-archive-af41e8314602.herokuapp.com/api/auth/users/${user.username}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await getUserProfile(user.username);
         setProfileData(response.data);
       } catch (error) {
         console.error("Error fetching profile data:", error);
@@ -65,22 +57,12 @@ const ProfileView = () => {
     setError("");
     setSuccess("");
     try {
-      const token = localStorage.getItem("token");
-      const response = await axios.put(
-        `https://donkey-archive-af41e8314602.herokuapp.com/api/auth/users/${profileData.Username}`,
-        {
-          Username: profileData.Username,
-          Email: profileData.Email,
-          Birthday: profileData.Birthday,
-          Password: password,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await updateUserProfile(profileData.Username, {
+        Username: profileData.Username,
+        Email: profileData.Email,
+        Birthday: profileData.Birthday,
+        Password: password,
+      });
 
       if (response.status === 200) {
         setSuccess("Profile updated successfully.");
@@ -90,7 +72,7 @@ const ProfileView = () => {
           JSON.stringify({ ...user, ...profileData })
         );
         setShowModal(false);
-        navigate("/profile");
+        navigate("/update");
       }
     } catch (err) {
       console.error("Error updating profile:", err);
