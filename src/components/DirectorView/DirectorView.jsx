@@ -20,7 +20,7 @@ const DirectorView = () => {
       setError("");
     } catch (err) {
       console.error("Search Error:", err);
-      setError("Error searching for movies. Please try again later.");
+      setError(err.message || "Error searching for movies. Please try again later.");
       setMovies([]);
       setDirector(null);
     }

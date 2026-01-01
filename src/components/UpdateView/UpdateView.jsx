@@ -20,9 +20,10 @@ const UpdateView = () => {
       try {
         const response = await getUserProfile();
         setProfileData(response.data);
+        setError("");
       } catch (error) {
         console.error("Error fetching profile data:", error);
-        setError("Error fetching profile data");
+        setError(error.message || "Error fetching profile data. Please try again later.");
       }
     };
 
@@ -46,7 +47,7 @@ const UpdateView = () => {
       }
     } catch (err) {
       console.error("Error updating profile:", err);
-      setError("Error updating profile");
+      setError(err.message || "Error updating profile. Please try again later.");
       setSuccess("");
     }
   };
