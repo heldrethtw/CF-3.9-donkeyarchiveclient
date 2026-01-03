@@ -15,6 +15,13 @@ const LoginView = ({ setLoggedIn }) => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
+    if (!username || !password) {
+      setError("Please enter both username and password.");
+      setSuccess("");
+      return;
+    }
+
     try {
       const response = await axios.post(
         "https://donkey-archive-af41e8314602.herokuapp.com/api/auth/login",
@@ -35,7 +42,27 @@ const LoginView = ({ setLoggedIn }) => {
       }
     } catch (err) {
       console.error("Login Error:", err);
-      setError("Error logging in. Please try again later.");
+
+      // Extract user-friendly error message
+      let errorMessage = "Error logging in. Please try again later.";
+      if (err.response) {
+        const status = err.response.status;
+        const serverMessage = err.response.data?.message || err.response.data?.error;
+
+        if (status === 401) {
+          errorMessage = "Invalid username or password. Please try again.";
+        } else if (status === 400) {
+          errorMessage = serverMessage || "Invalid request. Please check your input.";
+        } else if (status === 500) {
+          errorMessage = "Server error. Please try again later.";
+        } else if (serverMessage) {
+          errorMessage = serverMessage;
+        }
+      } else if (err.request) {
+        errorMessage = "Network error. Please check your internet connection.";
+      }
+
+      setError(errorMessage);
       setSuccess("");
     }
   };

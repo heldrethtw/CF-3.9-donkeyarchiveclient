@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Alert, Container, Row, Col } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
+import { getFavorites } from "../../services/API";
 import "./FavoriteMovies.scss";
 
 const FavoriteMovies = () => {
@@ -13,19 +13,19 @@ const FavoriteMovies = () => {
 
   useEffect(() => {
     const fetchMovies = async () => {
+      if (!username) {
+        setError("Username is required to view favorites.");
+        setLoading(false);
+        return;
+      }
+
       try {
-        const token = localStorage.getItem("token");
-        const response = await axios.get(
-          `https://donkey-archive-af41e8314602.herokuapp.com/api/auth/users/${username}/favorites`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await getFavorites(username);
         setMovies(response.data);
+        setError("");
       } catch (err) {
-        setError(err.message);
+        console.error("Error fetching favorite movies:", err);
+        setError(err.message || "Error loading favorite movies. Please try again later.");
       } finally {
         setLoading(false);
       }

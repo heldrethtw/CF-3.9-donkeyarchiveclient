@@ -25,9 +25,10 @@ const MovieView = () => {
     try {
       const response = await getAllMovies();
       setMovies(Array.isArray(response.data) ? response.data : []);
+      setError("");
     } catch (err) {
       console.error("Error fetching all movies:", err);
-      setError("Error fetching all movies. Please try again later.");
+      setError(err.message || "Error fetching all movies. Please try again later.");
     }
   };
 
@@ -40,7 +41,7 @@ const MovieView = () => {
       setError("");
     } catch (err) {
       console.error("Search Error:", err);
-      setError("Error searching for movies. Please try again later.");
+      setError(err.message || "Error searching for movies. Please try again later.");
       setMovies([]);
     }
   };
@@ -48,6 +49,7 @@ const MovieView = () => {
   const handleAddFavorite = async (movieId) => {
     if (!user || !user.username) {
       setError("You must be logged in to add favorites");
+      return;
     }
     console.log("Adding favorite:", movieId);
     try {
@@ -58,17 +60,22 @@ const MovieView = () => {
           movie._id === movieId ? { ...movie, isFavorite: true } : movie
         )
       );
+      setError("");
     } catch (err) {
       console.error(
         "Error adding favorite movie:",
         err.response ? err.response.data : err
       );
       console.error("Full error object:", err);
-      setError("Error adding favorite movie. Please try again later.");
+      setError(err.message || "Error adding favorite movie. Please try again later.");
     }
   };
 
   const handleRemoveFavorite = async (movieId) => {
+    if (!user || !user.username) {
+      setError("You must be logged in to remove favorites");
+      return;
+    }
     console.log("Removing favorite:", movieId);
     try {
       const response = await removeFavoriteMovie(user.username, movieId);
@@ -78,8 +85,10 @@ const MovieView = () => {
           movie._id === movieId ? { ...movie, isFavorite: false } : movie
         )
       );
+      setError("");
     } catch (err) {
       console.error("Error removing favorite:", err);
+      setError(err.message || "Error removing favorite movie. Please try again later.");
     }
   };
 

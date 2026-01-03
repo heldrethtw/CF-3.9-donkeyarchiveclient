@@ -16,6 +16,12 @@ const RegistrationView = ({ setLoggedIn }) => {
   const handleRegister = async (e) => {
     e.preventDefault();
 
+    if (!username || !password || !email) {
+      setError("Please fill in all required fields (username, password, and email).");
+      setSuccess("");
+      return;
+    }
+
     try {
       const response = await axios.post(
         "https://donkey-archive-af41e8314602.herokuapp.com/api/auth/users",
@@ -41,7 +47,27 @@ const RegistrationView = ({ setLoggedIn }) => {
       }
     } catch (err) {
       console.error("Registration Error:", err);
-      setError("Error registering. Please try again later.");
+
+      // Extract user-friendly error message
+      let errorMessage = "Error registering. Please try again later.";
+      if (err.response) {
+        const status = err.response.status;
+        const serverMessage = err.response.data?.message || err.response.data?.error;
+
+        if (status === 400) {
+          errorMessage = serverMessage || "Invalid input. Please check your information.";
+        } else if (status === 409) {
+          errorMessage = serverMessage || "Username or email already exists. Please choose different credentials.";
+        } else if (status === 500) {
+          errorMessage = "Server error. Please try again later.";
+        } else if (serverMessage) {
+          errorMessage = serverMessage;
+        }
+      } else if (err.request) {
+        errorMessage = "Network error. Please check your internet connection.";
+      }
+
+      setError(errorMessage);
       setSuccess("");
     }
   };
